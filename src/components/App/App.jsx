@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import Portfolio from "./pages/Portfolio";
+import NavBar from "../Navigation/NavBar";
+import Footer from "../Footer/Footer";
+import Home from "../../pages/Home";
+import Blog from "../../pages/Blog";
+import Portfolio from "../../pages/Portfolio";
 
 function App() {
   return (
