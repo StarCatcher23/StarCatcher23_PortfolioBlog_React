@@ -17,3 +17,26 @@
   align-items: center;
   justify-content: center;
 }
+
+.blog-search {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.blog-search input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  transition: all 0.2s ease;
+}
+
+.blog-search input:focus {
+  outline: none;
+  border-color: #8a8aff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(138, 138, 255, 0.2);
+}
