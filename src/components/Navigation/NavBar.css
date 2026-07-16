@@ -1,0 +1,38 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; /* forces full width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-family: "Termina", sans-serif;
+  color: black;
+}
+
+.navbar__name {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  color: black;
+  font-family: "Termina", sans-serif; /* FIXED */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 20px;
+  font-size: 16px;
+  font-family: "Termina", sans-serif; /* FIXED */
+}
+
+.nav-links a {
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #a98bd1; /* lighter lavender hover */

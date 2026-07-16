@@ -1,0 +1,20 @@
+.portfolio-page {
+  padding-top: 120px; /* pushes everything down */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.portfolio-page .portfolio-background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  width: 100vw; /* full viewport width */
+  margin-left: calc(50% - 50vw); /* centers the full-width section */
+  padding: 60px 20px;
+  border-radius: 0; /* optional: remove rounding for full-width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

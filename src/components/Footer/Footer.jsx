@@ -1,7 +1,9 @@
+import "./Footer.css";
+
 function Footer() {
   return (
-    <footer>
-      <p>&copy; 2026 StarCatcher23. All rights reserved.</p>
+    <footer className="footer">
+      <p>&copy; 2026 Designed with ❤️ purpose & built by Sorim Tim</p>
     </footer>
   );
 }

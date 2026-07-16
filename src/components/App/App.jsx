@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../Navigation/NavBar";
-import Footer from "../Footer/Footer";
 
 import Home from "../../pages/Home/Home";
 import AboutMe from "../../pages/AboutMe/AboutMe";
@@ -20,8 +19,6 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-
-      <Footer />
     </Router>
   );
 }

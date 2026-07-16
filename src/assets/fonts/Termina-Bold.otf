@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "Termina";
+  src: url("../../assets/fonts/Termina-Bold.otf") format("opentype");
+  font-weight: 700;
+}

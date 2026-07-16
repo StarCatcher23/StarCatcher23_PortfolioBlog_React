@@ -1,0 +1,67 @@
+/* PAGE WRAPPER */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MAIN TWO-COLUMN LAYOUT */
+.home {
+  flex: 1; /* fills remaining height under navbar */
+  display: flex;
+  align-items: stretch; /* left + right match height */
+  min-height: 100vh; /* ensures full height */
+}
+
+/* LEFT SIDE CONTENT */
+.left-content {
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers avatar + text */
+}
+
+/* HEADER SECTION */
+.home-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* AVATAR CONTAINER */
+.avatar-wrapper {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center; /* centers vertically */
+  margin: 2rem 0; /* spacing above/below */
+}
+
+/* AVATAR IMAGE */
+.home-avatar {
+  width: 180px; /* avatar size */
+  height: 180px;
+  border-radius: 50%; /* circular */
+  object-fit: cover;
+  border: 4px solid #f5e9d7; /* soft cream border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* subtle depth */
+}
+
+.home-quote {
+  text-align: center; /* centers the quote text */
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #555; /* soft, calm tone */
+}
+
+/* RIGHT SIDE BACKGROUND IMAGE */
+.right-image {
+  flex: 1;
+  background-image: url("../../assets/coffeebackground.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* ensures full height */
+}
