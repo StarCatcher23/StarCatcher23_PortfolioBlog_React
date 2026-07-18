@@ -3,16 +3,100 @@ import avatar from "../../assets/myavatar.png";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
 
+const localQuotes = [
+  {
+    quote: "You are capable of amazing things.",
+    author: "Anonymous",
+  },
+  {
+    quote: "Every moment is a fresh beginning.",
+    author: "T.S. Eliot",
+  },
+  {
+    quote: "Be gentle with yourself. You’re doing the best you can.",
+    author: "Anonymous",
+  },
+  {
+    quote: "Small progress is still progress.",
+    author: "Anonymous",
+  },
+  {
+    quote: "Healing is not linear.",
+    author: "Anonymous",
+  },
+  {
+    quote: "Believe in the person you are becoming.",
+    author: "Anonymous",
+  },
+  {
+    quote: "You deserve to take up space.",
+    author: "Anonymous",
+  },
+  {
+    quote: "Growth is uncomfortable because you’ve never been here before.",
+    author: "Anonymous",
+  },
+  {
+    quote: "You are stronger than your struggles.",
+    author: "Anonymous",
+  },
+  {
+    quote: "Your story isn’t over yet.",
+    author: "Anonymous",
+  },
+];
+
 function Home() {
-  const [quote, setQuote] = useState("");
+  const [quote, setQuote] = useState(localQuotes[0].quote);
+  const [author, setAuthor] = useState(localQuotes[0].author);
+  const [loading, setLoading] = useState(true); // shimmer state
+  const [fade, setFade] = useState(false); // fade-in animation
+
+  function getRandomQuote() {
+    const randomQuote =
+      localQuotes[Math.floor(Math.random() * localQuotes.length)];
+    return randomQuote;
+  }
+
+  async function loadZenQuote() {
+    try {
+      setLoading(true);
+      setFade(false);
+
+      const response = await fetch("https://dummyjson.com/quotes");
+
+      if (!response.ok) {
+        console.log("API failed — using fallback quotes");
+        throw new Error("Unable to load quote");
+      }
+
+      const data = await response.json();
+      console.log("Loaded", data.quotes.length, "quotes");
+
+      const randomQuote =
+        data.quotes[Math.floor(Math.random() * data.quotes.length)];
+
+      setQuote(randomQuote.quote);
+      setAuthor(randomQuote.author || "Anonymous");
+    } catch (error) {
+      console.log("Error:", error);
+      const fallbackQuote = getRandomQuote();
+      setQuote(fallbackQuote.quote);
+      setAuthor(fallbackQuote.author);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+        setFade(true);
+      }, 300);
+    }
+  }
 
   useEffect(() => {
-    setQuote("You are capable of amazing things.");
+    loadZenQuote();
   }, []);
 
   return (
     <div className="page">
-      {" "}
       <div className="home">
         <div className="left-content">
           <section className="header">
@@ -27,7 +111,21 @@ function Home() {
               <img src={avatar} alt="Sorim Tim" className="home-avatar" />
             </div>
 
-            <div className="home-quote">{quote && <p>✨ {quote}</p>}</div>
+            {/* QUOTE SECTION */}
+            <div className={`hero__quote ${fade ? "fade-in" : ""}`}>
+              {loading ? (
+                <div className="quote-shimmer"></div>
+              ) : (
+                <>
+                  <p className="quote-text">{quote}</p>
+                  {author && <p className="quote-author">— {author}</p>}
+                </>
+              )}
+
+              <button className="new-quote-btn" onClick={loadZenQuote}>
+                ✨ New Quote
+              </button>
+            </div>
           </section>
 
           <section className="home-preview">
@@ -45,6 +143,7 @@ function Home() {
               technology can support people in meaningful ways.
             </p>
           </section>
+
           <Footer />
         </div>
 

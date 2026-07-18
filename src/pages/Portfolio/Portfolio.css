@@ -1,9 +1,31 @@
 .portfolio-page {
   padding-top: 120px; /* pushes everything down */
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
+@media (max-width: 767px) {
+  .portfolio-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .portfolio-page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-page {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
 
 .portfolio-page .portfolio-background-image {
   background-size: cover;

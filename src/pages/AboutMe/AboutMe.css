@@ -1,7 +1,29 @@
 .about-me-page {
   padding-top: 120px; /* pushes everything down */
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+  font-family: "Lust", Georgia, serif;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.about-me-page @media (max-width: 767px) {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-me-page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-me-page {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 .about-me-background-image {

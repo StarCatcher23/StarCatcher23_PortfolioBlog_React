@@ -1,7 +1,30 @@
 .blog-page {
   padding-top: 120px; /* pushes everything down */
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 767px) {
+  .blog-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-page {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 .blog-page .blog-background-image {
@@ -20,8 +43,31 @@
 
 .blog-search {
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 30px auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 767px) {
+  .blog-search {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-search {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-search {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 .blog-search input {

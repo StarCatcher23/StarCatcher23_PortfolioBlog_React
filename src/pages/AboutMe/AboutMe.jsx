@@ -14,6 +14,7 @@ const AboutMe = () => {
         </section>
       </section>
 
+<section className="about-me-content">  
       <p>
         I come from a healthcare and patient‑experience background where
         empathy, listening, and supporting people were at the center of
@@ -47,6 +48,7 @@ const AboutMe = () => {
         create. Together, my portfolio and blog tell the story of where I’ve
         been, what I’m building, and the kind of impact I hope to make.
       </p>
+    </section>
     </div>
   );
 };
