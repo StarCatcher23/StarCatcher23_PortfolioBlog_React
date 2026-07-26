@@ -13,6 +13,14 @@
   min-height: 100vh; /* ensures full height */
 }
 
+.home-preview {
+  flex: 1; /* left column takes up half */
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centers vertically */
+}
+
 /* LEFT SIDE CONTENT */
 .left-content {
   flex: 1;

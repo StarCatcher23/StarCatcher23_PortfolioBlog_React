@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./AboutMe.css";
 import aboutBg from "../../assets/Rectangle 4.png";
+import Footer from "../../components/Footer/Footer";
 
 const AboutMe = () => {
   return (
@@ -49,6 +50,7 @@ const AboutMe = () => {
         been, what I’m building, and the kind of impact I hope to make.
       </p>
     </section>
+  <Footer />
     </div>
   );
 };

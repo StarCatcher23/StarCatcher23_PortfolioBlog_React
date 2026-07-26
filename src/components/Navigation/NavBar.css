@@ -1,14 +1,17 @@
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0; /* forces full width */
+  right: 0;
+  z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   font-family: "Lust", Georgia, serif;
   color: black;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(6px);
 }
 
 .navbar__name {
@@ -36,3 +39,4 @@
 
 .nav-links a:hover {
   color: #a98bd1; /* lighter lavender hover */
+}

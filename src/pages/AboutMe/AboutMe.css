@@ -1,16 +1,71 @@
 .about-me-page {
-  padding-top: 120px; /* pushes everything down */
+  display: flex;
+  flex-direction: column;
+  padding-top: 96px;
   max-width: 1200px;
   margin: 0 auto;
   font-family: "Lust", Georgia, serif;
   padding-left: 24px;
   padding-right: 24px;
+  position: relative;
+  z-index: 0;
 }
 
-.about-me-page @media (max-width: 767px) {
-  padding-left: 16px;
-  padding-right: 16px;
+.about-me-page::before {
+  content: "";
+  position: absolute;
+  top: 360px;
+  right: -40px;
+  width: 500px;
+  height: 500px;
+  background-image: url("../../assets/cartoonself.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  z-index: -1;
+  pointer-events: none;
 }
+
+.about-me-background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  width: 100vw; /* full viewport width */
+  margin-left: calc(50% - 50vw); /* centers the full-width section */
+  padding: 60px 20px;
+  border-radius: 0; /* optional: remove rounding for full-width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-me-content {
+  position: relative; /* gives ::before a positioning anchor */
+  width: 100%;
+  max-width: 900px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 40px; /* padding belongs here, not on <p> */
+}
+
+.about-me-content p {
+  margin-bottom: 24px; /* clean spacing between paragraphs */
+}
+
+@media (max-width: 767px) {
+  .about-me-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/*Media size adjustments for tablet and desktop */
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .about-me-page {
@@ -24,18 +79,4 @@
     padding-left: 32px;
     padding-right: 32px;
   }
-}
-
-.about-me-background-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  width: 100vw; /* full viewport width */
-  margin-left: calc(50% - 50vw); /* centers the full-width section */
-  padding: 60px 20px;
-  border-radius: 0; /* optional: remove rounding for full-width */
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

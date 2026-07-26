@@ -127,23 +127,24 @@ function Home() {
               </button>
             </div>
           </section>
+          <p>
+            <section className="home-preview">
+              <h2>My Developer Approach</h2>
 
-          <section className="home-preview">
-            <h2>My Developer Approach</h2>
-            <p>
-              I love turning ideas into functional, polished web experiences
-              using modern full‑stack tools.
-            </p>
-            <p>
-              Whether it’s crafting intuitive UI or building reliable backend
-              logic, I focus on thoughtful, human‑centered design.
-            </p>
-            <p>
-              My work is guided by curiosity, growth, and the belief that
-              technology can support people in meaningful ways.
-            </p>
-          </section>
-
+              <p>
+                I love turning ideas into functional, polished web experiences
+                using modern full‑stack tools.
+              </p>
+              <p>
+                Whether it’s crafting intuitive UI or building reliable backend
+                logic, I focus on thoughtful, human‑centered design.
+              </p>
+              <p>
+                My work is guided by curiosity, growth, and the belief that
+                technology can support people in meaningful ways.
+              </p>
+            </section>
+          </p>
           <Footer />
         </div>
 
