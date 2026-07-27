@@ -1,54 +1,241 @@
+/* -----------------------------------------------------------
+   BLOG PAGE LAYOUT (desktop-first)
+   ----------------------------------------------------------- */
 .blog-page {
-  padding-top: 120px; /* pushes everything down */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 24px;
+  padding-top: 120px; /* pushes content below the header */
+  max-width: 1200px; /* main content width */
+  margin: 0 auto; /* centers the page */
+  padding-left: 24px; /* default desktop side padding */
   padding-right: 24px;
 }
 
+/* spacing below the header section */
+.blog-header {
+  margin-bottom: 40px;
+}
+
+/* -----------------------------------------------------------
+   BLOG POST LIST (container for all cards)
+   ----------------------------------------------------------- */
+.blog-post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+/* -----------------------------------------------------------
+   BLOG CARD (individual blog preview)
+   ----------------------------------------------------------- */
+.blog-post-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.blog-post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.blog-post-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.blog-post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.blog-post-card:hover .blog-post-image {
+  transform: scale(1.03);
+}
+
+.blog-post-card-body {
+  padding: 18px 16px 20px;
+}
+
+/* -----------------------------------------------------------
+   BLOG CARD TYPOGRAPHY
+   ----------------------------------------------------------- */
+
+/* blog post title */
+.blog-post-title {
+  font-size: 18px;
+  margin: 0;
+  font-family: "Lust", Georgia, serif;
+  line-height: 1.3;
+}
+
+.blog-post-preview {
+  display: none;
+}
+
+/* date label */
+.blog-post-date {
+  display: block;
+  margin-top: 14px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* FEATURED ARTICLE SECTION */
+.featured-article {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.featured-text {
+  flex: 1;
+}
+
+.featured-heading {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.featured-title {
+  font-size: 32px;
+  margin-bottom: 16px;
+  font-family: "Lust", Georgia, serif;
+}
+
+.featured-preview {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.featured-readmore {
+  background: none;
+  border: none;
+  color: #8a8aff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.featured-image img {
+  width: 420px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE: MOBILE (max-width: 767px)
+   ----------------------------------------------------------- */
 @media (max-width: 767px) {
   .blog-page {
-    padding-left: 16px;
+    padding-left: 16px; /* tighter mobile padding */
     padding-right: 16px;
   }
-}
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .blog-page {
-    padding-left: 24px;
-    padding-right: 24px;
+  .blog-post-card {
+    padding: 20px; /* smaller card padding */
+  }
+
+  .blog-post-title {
+    font-size: 22px; /* smaller title */
+  }
+
+  .blog-post-preview {
+    font-size: 15px; /* smaller preview text */
+  }
+
+  .blog-post-list {
+    gap: 24px; /* tighter spacing between cards */
   }
 }
 
+/* -----------------------------------------------------------
+   RESPONSIVE: TABLET (768px–1023px)
+   ----------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-page {
+    padding-left: 24px; /* tablet padding */
+    padding-right: 24px;
+  }
+
+  .blog-post-card {
+    padding: 28px; /* slightly smaller padding */
+  }
+
+  .blog-post-title {
+    font-size: 24px; /* tablet title size */
+  }
+
+  .blog-post-preview {
+    font-size: 16px; /* tablet preview size */
+  }
+}
+
+@media (max-width: 1023px) {
+  .featured-article {
+    flex-direction: column;
+  }
+
+  .featured-image img {
+    width: 100%;
+  }
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE: DESKTOP LARGE (1024px+)
+   ----------------------------------------------------------- */
 @media (min-width: 1024px) {
   .blog-page {
-    padding-left: 32px;
+    padding-left: 32px; /* extra breathing room on large screens */
     padding-right: 32px;
   }
 }
 
+/* -----------------------------------------------------------
+   FULL-WIDTH HEADER BACKGROUND IMAGE
+   ----------------------------------------------------------- */
 .blog-page .blog-background-image {
-  background-size: cover;
+  background-size: cover; /* fill the header */
   background-position: center;
   background-repeat: no-repeat;
 
-  width: 100vw; /* full viewport width */
-  margin-left: calc(50% - 50vw); /* centers the full-width section */
-  padding: 60px 20px;
-  border-radius: 0; /* optional: remove rounding for full-width */
+  width: 100vw; /* stretch across entire viewport */
+  margin-left: calc(50% - 50vw); /* align full-width section with page center */
+  padding: 60px 20px; /* header padding */
+  border-radius: 0; /* ensure no rounding */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* -----------------------------------------------------------
+   SEARCH BAR CONTAINER
+   ----------------------------------------------------------- */
 .blog-search {
   width: 100%;
-  max-width: 1200px;
-  margin: 30px auto;
+  max-width: 1200px; /* match main page width */
+  margin: 30px auto; /* center search bar */
   padding-left: 24px;
   padding-right: 24px;
 }
 
+/* mobile search bar spacing */
 @media (max-width: 767px) {
   .blog-search {
     padding-left: 16px;
@@ -56,6 +243,7 @@
   }
 }
 
+/* tablet search bar spacing */
 @media (min-width: 768px) and (max-width: 1023px) {
   .blog-search {
     padding-left: 24px;
@@ -63,6 +251,7 @@
   }
 }
 
+/* desktop search bar spacing */
 @media (min-width: 1024px) {
   .blog-search {
     padding-left: 32px;
@@ -70,19 +259,23 @@
   }
 }
 
+/* -----------------------------------------------------------
+   SEARCH INPUT FIELD
+   ----------------------------------------------------------- */
 .blog-search input {
   width: 100%;
-  padding: 14px 18px;
+  padding: 14px 18px; /* comfortable input padding */
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: 12px; /* soft rounded corners */
   border: 1px solid #ddd;
   background: #f7f7f7;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease; /* smooth focus animation */
 }
 
+/* focus state */
 .blog-search input:focus {
   outline: none;
-  border-color: #8a8aff;
+  border-color: #8a8aff; /* purple accent */
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(138, 138, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(138, 138, 255, 0.2); /* soft glow */
 }
