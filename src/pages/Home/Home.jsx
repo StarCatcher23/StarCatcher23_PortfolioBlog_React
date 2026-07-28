@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import avatar from "../../assets/myavatar.png";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
+import Preloader from "../../components/Preloader/preloader";
 
 const localQuotes = [
   {
@@ -114,14 +115,13 @@ function Home() {
             {/* QUOTE SECTION */}
             <div className={`hero__quote ${fade ? "fade-in" : ""}`}>
               {loading ? (
-                <div className="quote-shimmer"></div>
+                <Preloader /> //this lines runs the Preloader file and pulls the preloader-text//
               ) : (
                 <>
                   <p className="quote-text">{quote}</p>
                   {author && <p className="quote-author">— {author}</p>}
                 </>
               )}
-
               <button className="new-quote-btn" onClick={loadZenQuote}>
                 ✨ New Quote
               </button>
