@@ -1,3 +1,5 @@
+import "./BlogPost.css";
+
 const BlogPostCard = ({ post, onOpen }) => {
   return (
     <div className="blog-post-card" onClick={() => onOpen(post)}>

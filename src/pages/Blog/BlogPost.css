@@ -1,0 +1,22 @@
+.blog-post-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  line-height: 1.75;
+  color: #333;
+}
+
+
+.blog-post-title {
+  font-family: "Lust", Georgia, serif;
+  font-size: 25px;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+
+.blog-post-page h2 {
+  font-size: 28px;
+  margin: 40px 0 16px;
+  font-weight: 600;
+}
