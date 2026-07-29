@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./Portfolio.css";
 import aboutBg from "../../assets/Rectangle 4.png";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";

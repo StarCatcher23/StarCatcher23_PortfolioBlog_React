@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import avatar from "../../assets/myavatar.png";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
@@ -59,7 +59,7 @@ function Home() {
     return randomQuote;
   }
 
-  async function loadZenQuote() {
+  const loadZenQuote = useCallback(async () => {
     try {
       setLoading(true);
       setFade(false);
@@ -90,11 +90,12 @@ function Home() {
         setFade(true);
       }, 300);
     }
-  }
+  }, []);
 
   useEffect(() => {
-    loadZenQuote();
-  }, []);
+    // defer invocation so state updates don't run synchronously inside the effect
+    Promise.resolve().then(() => loadZenQuote());
+  }, [loadZenQuote]);
 
   return (
     <div className="page">
@@ -115,7 +116,7 @@ function Home() {
             {/* QUOTE SECTION */}
             <div className={`hero__quote ${fade ? "fade-in" : ""}`}>
               {loading ? (
-                <Preloader /> //this lines runs the Preloader file and pulls the preloader-text//
+                <Preloader />
               ) : (
                 <>
                   <p className="quote-text">{quote}</p>

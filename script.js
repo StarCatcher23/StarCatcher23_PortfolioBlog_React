@@ -9,7 +9,9 @@ async function loadZenQuote() {
     document.getElementById("quote-text").textContent = quote;
     document.getElementById("quote-author").textContent = `— ${author}`;
   } catch (error) {
-    document.getElementById("quote-text").textContent = "Stay positive and keep moving forward.";
+    console.error(error);
+    document.getElementById("quote-text").textContent =
+      "Stay positive and keep moving forward.";
     document.getElementById("quote-author").textContent = "";
   }
 }

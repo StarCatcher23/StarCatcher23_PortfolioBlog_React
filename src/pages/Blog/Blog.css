@@ -139,6 +139,23 @@
   object-fit: cover;
 }
 
+.email-button__btn {
+  background-color: #000; /* black pill */
+  color: #fff; /* white text */
+  padding: 8px 20px; /* small like your image */
+  border: none;
+  border-radius: 999px; /* perfect oval */
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* ensures NO background behind text */
+  background-clip: padding-box;
+}
+
 /* -----------------------------------------------------------
    RESPONSIVE: MOBILE (max-width: 767px)
    ----------------------------------------------------------- */

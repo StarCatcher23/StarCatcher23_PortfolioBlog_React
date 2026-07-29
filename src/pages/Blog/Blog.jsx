@@ -123,7 +123,7 @@ const Blog = () => {
           <p>
             {" "}
             My first project was the Coffee Shop, where I learned HTML, CSS, and
-            JavaScript. Then came Mindful Moments, where I built modals and user
+            JavaScript. Then came "Spots", where I built modals and user
             functionality like the “like” button. With every project, I gained
             more experience in both frontend and backend development. Now I’m at
             my final project — my custom project — this website, my portfolio,
@@ -170,8 +170,8 @@ const Blog = () => {
             inside a modal. I spent even more hours debugging issues in the
             browser’s inspect mode, checking and rechecking my VS Code setup,
             only to discover that I made the most rookie mistake of all: I
-            forgot to import the CSS file into my JSX component. Drops head on
-            table.
+            forgot to import the CSS file into my JSX component. (Drops head on
+            table.)
           </p>
 
           <p>
@@ -194,7 +194,8 @@ const Blog = () => {
             countless Figma templates for portfolios and blogs before finally
             settling on The Observer theme. I followed some of its styling, but
             eventually I adjusted things to be more functional and aesthetically
-            pleasing for my own vision.
+            pleasing for my own vision and from what I think the user would
+            enjoy.
           </p>
 
           <p>
@@ -208,7 +209,7 @@ const Blog = () => {
 
           <p>
             I even created AI‑generated cartoon images of myself, and they
-            turned out surprisingly accurate. I loved them. (Am I the only one
+            turned out surprisingly accurate. I love them. (Am I the only one
             who wonders what it would feel like to be a cartoon or a Marvel
             hero?) There is still more styling to refine and more thumbnails to
             add, but I’ve come a long way from just one idea.
@@ -307,7 +308,18 @@ const Blog = () => {
             If you have any ideas that could help software engineers, beginners,
             or anyone currently on their tech journey, I’d love to hear them.
           </p>
-          <p>(Comment section coming soon.) </p>
+          <p>Comment section coming soon. Send me an email if you'd like.</p>
+
+          <div className="email-button">
+            <button
+              className="email-button__btn"
+              onClick={() =>
+                (window.location.href = "mailto:sorim.swe@gmail.com")
+              }
+            >
+              Email
+            </button>
+          </div>
         </>
       ),
       date: "July 2026",
@@ -373,7 +385,7 @@ const Blog = () => {
 
               <div className="modal-article-text">
                 <h2 className="modal-title">{activeArticle.title}</h2>
-                <p className="modal-body">{activeArticle.fullText}</p>
+                <div className="modal-body">{activeArticle.fullText}</div>
               </div>
             </div>
 
