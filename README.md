@@ -142,6 +142,10 @@ Your site will be available at:
 http://localhost:5173
 ```
 
+ ## Project Pitch Video
+ 
+ Check out [this video](https://drive.google.com/file/d/13GdM0vBrcyRew8BL-DDW02KzoXW7Gook/view?usp=sharing), where I describe my 
+ project and some challenges I faced while building it.
 ---
 
 ## 📬 Author
