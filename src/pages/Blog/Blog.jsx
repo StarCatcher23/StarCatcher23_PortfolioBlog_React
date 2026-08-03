@@ -8,7 +8,7 @@ import mentalImg from "../../assets/mentalImg.jpg";
 
 import BlogPostList from "./BlogPostList";
 import FeaturedArticle from "./FeaturedArticle";
-import Modal from "../../components/Modal/temp";
+import Modal from "../../components/Modal/Modal";
 import ModalThumbnailGrid from "../../components/Modal/ModalThumbnailGrid";
 
 const Blog = () => {
