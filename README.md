@@ -136,7 +136,13 @@ Start the development server:
 npm run dev
 ```
 
-Your site will be available at:
+## 🚀 Live Deployment
+
+My project is deployed on GitHub Pages:
+
+🔗 https://starcatcher23.github.io/StarCatcher23_PortfolioBlog_React/
+
+
 
 ```
 http://localhost:5173
