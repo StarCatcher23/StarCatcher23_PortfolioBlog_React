@@ -32,11 +32,13 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  width: 100vw; /* full viewport width */
-  margin-left: calc(50% - 50vw); /* centers the full-width section */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   padding: 60px 20px;
-  border-radius: 0; /* optional: remove rounding for full-width */
+  border-radius: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }

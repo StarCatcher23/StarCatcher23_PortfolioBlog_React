@@ -1,5 +1,6 @@
 .about-me-page {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   padding-top: 96px;
   max-width: 1200px;
@@ -32,13 +33,15 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  width: 100vw; /* full viewport width */
-  margin-left: calc(50% - 50vw); /* centers the full-width section */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   padding: 60px 20px;
-  border-radius: 0; /* optional: remove rounding for full-width */
+  border-radius: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .about-me-content {
@@ -58,10 +61,25 @@
   margin-bottom: 24px; /* clean spacing between paragraphs */
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 @media (max-width: 767px) {
   .about-me-page {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .about-me-background-image {
+    padding: 40px 16px;
+  }
+
+  .about-me-content {
+    padding: 24px 0;
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 }
 

@@ -1,11 +1,12 @@
 .project-card {
   margin-top: 40px;
   margin-bottom: 40px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #271a1a;
+  border-radius: 20px;
   padding: 16px;
-  background: #fff;
+  background: #F3EFFA;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   gap: 8px;
 }

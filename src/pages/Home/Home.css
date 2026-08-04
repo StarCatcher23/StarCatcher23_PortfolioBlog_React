@@ -8,6 +8,7 @@
 .home {
   flex: 1; /* fills remaining height under navbar */
   display: flex;
+  flex-wrap: wrap; /* allows stacking on smaller screens */
   align-items: stretch; /* left + right match height */
   min-height: 100vh; /* ensures full height */
 }
@@ -16,6 +17,7 @@
   flex: 1; /* left column takes up half */
   padding: 4rem;
   display: flex;
+  flex-wrap: wrap; /* allows content to stack on smaller screens */
   flex-direction: column;
   justify-content: center; /* centers vertically */
 }
@@ -25,6 +27,7 @@
   flex: 1;
   padding: 4rem 4rem 2rem;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center; /* centers avatar + text */
 }
@@ -32,6 +35,7 @@
 /* HEADER SECTION */
 .home-hero {
   display: flex;
+  flex-wrap: wrap; /* allows stacking on smaller screens */
   align-items: center;
   gap: 1.25rem;
   margin-top: 3rem;
@@ -41,6 +45,7 @@
 /* AVATAR CONTAINER */
 .avatar-wrapper {
   display: flex;
+  flex-wrap: wrap; /* allows avatar to center on smaller screens */
   justify-content: center; /* centers horizontally */
   align-items: center; /* centers vertically */
   margin: 2rem 0; /* spacing above/below */

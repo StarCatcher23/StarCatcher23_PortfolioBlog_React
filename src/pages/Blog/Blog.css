@@ -95,6 +95,7 @@
 /* FEATURED ARTICLE SECTION */
 .featured-article {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
   align-items: flex-start;
   margin-bottom: 60px;
@@ -178,6 +179,7 @@
   }
 
   .blog-post-list {
+    grid-template-columns: 1fr;
     gap: 24px; /* tighter spacing between cards */
   }
 }
@@ -232,13 +234,15 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  width: 100vw; /* stretch across entire viewport */
-  margin-left: calc(50% - 50vw); /* align full-width section with page center */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   padding: 60px 20px; /* header padding */
   border-radius: 0; /* ensure no rounding */
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 /* -----------------------------------------------------------
