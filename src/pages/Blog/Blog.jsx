@@ -378,14 +378,14 @@ const Blog = () => {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {activeArticle && (
           <>
-            <div className="modal-article">
-              <div className="modal-article-image">
+            <div className="modal__article">
+              <div className="modal__image">
                 <img src={activeArticle.image} alt={activeArticle.title} />
               </div>
 
-              <div className="modal-article-text">
-                <h2 className="modal-title">{activeArticle.title}</h2>
-                <div className="modal-body">{activeArticle.fullText}</div>
+              <div className="modal__text">
+                <h2 className="modal__title">{activeArticle.title}</h2>
+                <div className="modal__body">{activeArticle.fullText}</div>
               </div>
             </div>
 
