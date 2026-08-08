@@ -100,56 +100,62 @@ function Home() {
   return (
     <div className="page">
       <div className="home">
-        <div className="left-content">
-          <section className="header">
-            <div className="home-hero">
+        {/* LEFT SIDE */}
+        <div className="home__left">
+          {/* HEADER SECTION */}
+          <section className="home__header">
+            <div className="home__hero">
               <div>
-                <h1 className="home-title">Welcome to my Portfolio + Blog</h1>
-                <p className="home-subtitle">Full-Stack Web Developer</p>
+                <h1 className="home__title">Welcome to my Portfolio + Blog</h1>
+                <p className="home__subtitle">Full-Stack Web Developer</p>
               </div>
             </div>
 
-            <div className="avatar-wrapper">
-              <img src={avatar} alt="Sorim Tim" className="home-avatar" />
+            {/* AVATAR */}
+            <div className="home__avatar-wrapper">
+              <img src={avatar} alt="Sorim Tim" className="home__avatar" />
             </div>
 
             {/* QUOTE SECTION */}
-            <div className={`hero__quote ${fade ? "fade-in" : ""}`}>
+            <div className={`home__quote ${fade ? "fade-in" : ""}`}>
               {loading ? (
                 <Preloader />
               ) : (
                 <>
-                  <p className="quote-text">{quote}</p>
-                  {author && <p className="quote-author">— {author}</p>}
+                  <p className="home__quote-text">{quote}</p>
+                  {author && <p className="home__quote-author">— {author}</p>}
                 </>
               )}
-              <button className="new-quote-btn" onClick={loadZenQuote}>
+
+              <button className="home__quote-btn" onClick={loadZenQuote}>
                 ✨ New Quote
               </button>
             </div>
           </section>
-          <p>
-            <section className="home-preview">
-              <h2>My Developer Approach</h2>
 
-              <p>
-                I love turning ideas into functional, polished web experiences
-                using modern full‑stack tools.
-              </p>
-              <p>
-                Whether it’s crafting intuitive UI or building reliable backend
-                logic, I focus on thoughtful, human‑centered design.
-              </p>
-              <p>
-                My work is guided by curiosity, growth, and the belief that
-                technology can support people in meaningful ways.
-              </p>
-            </section>
-          </p>
+          {/* PREVIEW SECTION */}
+          <section className="home__preview">
+            <h2 className="home__preview-title">My Developer Approach</h2>
+
+            <p>
+              I love turning ideas into functional, polished web experiences
+              using modern full‑stack tools.
+            </p>
+            <p>
+              Whether it’s crafting intuitive UI or building reliable backend
+              logic, I focus on thoughtful, human‑centered design.
+            </p>
+            <p>
+              My work is guided by curiosity, growth, and the belief that
+              technology can support people in meaningful ways.
+            </p>
+          </section>
+
           <Footer />
         </div>
 
-        <div className="right-image" aria-hidden="true"></div>
+        {/* RIGHT SIDE IMAGE */}
+        <div className="home__right-image" aria-hidden="true"></div>
       </div>
     </div>
   );
