@@ -4,16 +4,18 @@ import Footer from "../../components/Footer/Footer";
 
 const AboutMe = () => {
   return (
-    <div className="about-me-page">
-<section className="about-me-header full-bleed">
-  <div className="about-me-background-image" style={{ backgroundImage: `url(${aboutBg})` }}>
-    <h1>About Me</h1>
-  </div>
-</section>
+    <div className="about">
+      <section className="about__header full-bleed">
+        <div
+          className="about__background-image"
+          style={{ backgroundImage: `url(${aboutBg})` }}
+        >
+          <h1 className="about__title">About Me</h1>
+        </div>
+      </section>
 
-
-      <section className="about-me-content">
-        <p>
+      <section className="about__content">
+        <p className="about__paragraph">
           I come from a healthcare and patient‑experience background where
           empathy, listening, and supporting people were at the center of
           everything I did. Working closely with patients taught me how deeply
@@ -23,7 +25,7 @@ const AboutMe = () => {
           carry with me into every part of my work.
         </p>
 
-        <p>
+        <p className="about__paragraph">
           As a full‑stack web developer, I’ve grown confident in building
           projects from the ground up — from designing responsive UIs to
           structuring clean, scalable backend logic. I’ve learned how to break
@@ -35,8 +37,7 @@ const AboutMe = () => {
           genuinely help people and make a positive impact in the world.
         </p>
 
-        <p>
-          {" "}
+        <p className="about__paragraph">
           My portfolio showcases the projects that represent my growth, my
           creativity, and my commitment to thoughtful, user‑centered
           development. Alongside it, my blog is a space where I write about
@@ -48,6 +49,7 @@ const AboutMe = () => {
           impact I hope to make.
         </p>
       </section>
+
       <Footer />
     </div>
   );
