@@ -4,24 +4,27 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <nav className="navbar">
-      <h1 className="navbar__name">Sorim Tim</h1>
-      <ul className="nav-links">
-        <li>
-          <Link to="/">Home</Link>
+      <h1 className="navbar__brand">Sorim Tim</h1>
+
+      <ul className="navbar__links">
+        <li className="navbar__item">
+          <Link to="/" className="navbar__link">Home</Link>
         </li>
-        <li>
-          <Link to="/about">About Me</Link>
+
+        <li className="navbar__item">
+          <Link to="/about" className="navbar__link">About Me</Link>
         </li>
-        <li>
-          <Link to="/portfolio">Portfolio</Link>
+
+        <li className="navbar__item">
+          <Link to="/portfolio" className="navbar__link">Portfolio</Link>
         </li>
-        <li>
-          <Link to="/blog">Blog</Link>
+
+        <li className="navbar__item">
+          <Link to="/blog" className="navbar__link">Blog</Link>
         </li>
-        <li>
-          <Link to="/contact" className="contact-link">
-            Contact
-          </Link>
+
+        <li className="navbar__item">
+          <Link to="/contact" className="navbar__link">Contact</Link>
         </li>
       </ul>
     </nav>

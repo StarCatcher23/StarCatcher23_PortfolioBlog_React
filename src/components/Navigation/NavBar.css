@@ -22,7 +22,7 @@
   font-family: "Lust", Georgia, serif; /* FIXED */
 }
 
-.nav-links {
+.navbar__links {
   list-style: none;
   display: flex;
   gap: 20px;
@@ -31,12 +31,12 @@
   font-family: "Lust", Georgia, serif; /* FIXED */
 }
 
-.nav-links a {
+.navbar__links a {
   color: black;
   font-weight: 550;
   text-decoration: none;
 }
 
-.nav-links a:hover {
+.navbar__links a:hover {
   color: #a98bd1; /* lighter lavender hover */
 }
