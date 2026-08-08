@@ -59,20 +59,18 @@ const projects = [
 
 const Portfolio = () => {
   return (
-    <div className="portfolio-page">
-      <section className="full-bleed">
-        <div
-          className="portfolio-header portfolio-background-image"
-          style={{ backgroundImage: `url(${aboutBg})` }}
-        >
-          <h1>Portfolio</h1>
+   <div className="portfolio">
+    
+    <section className="portfolio__header full-bleed">
+      <div className="portfolio__background-image" style={{ backgroundImage: `url(${aboutBg})` }}>
+          <h1 className="portfolio__title">Portfolio</h1>
         </div>
       </section>
 
-      <section className="portfolio-content">
-        <h2>My Projects</h2>
+      <section className="portfolio__content">
+        <h2 className="portfolio__subtitle">Projects</h2> 
 
-        <div className="projects-grid">
+        <div className="projects__projects-grid">
           {projects.map((project) => (
             <ProjectCard
               key={project.id}
@@ -84,6 +82,7 @@ const Portfolio = () => {
           ))}
         </div>
       </section>
+      
     </div>
   );
 };
