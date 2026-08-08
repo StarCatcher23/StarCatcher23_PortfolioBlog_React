@@ -5,14 +5,12 @@ import Footer from "../../components/Footer/Footer";
 const AboutMe = () => {
   return (
     <div className="about-me-page">
-      <section className="about-me-header">
-        <section
-          className="about-me-background-image"
-          style={{ backgroundImage: `url(${aboutBg})` }}
-        >
-          <h1>About Me</h1>
-        </section>
-      </section>
+<section className="about-me-header full-bleed">
+  <div className="about-me-background-image" style={{ backgroundImage: `url(${aboutBg})` }}>
+    <h1>About Me</h1>
+  </div>
+</section>
+
 
       <section className="about-me-content">
         <p>

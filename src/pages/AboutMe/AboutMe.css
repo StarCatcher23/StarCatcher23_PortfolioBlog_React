@@ -33,15 +33,19 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%; /* FIX: replaces 100vw */
+  height: 200px; /* keeps hero height */
   padding: 60px 20px;
-  border-radius: 0;
+
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
   box-sizing: border-box;
+}
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 
 .about-me-content {

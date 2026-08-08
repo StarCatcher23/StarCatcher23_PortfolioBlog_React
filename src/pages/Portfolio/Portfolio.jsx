@@ -60,11 +60,13 @@ const projects = [
 const Portfolio = () => {
   return (
     <div className="portfolio-page">
-      <section
-        className="portfolio-header portfolio-background-image"
-        style={{ backgroundImage: `url(${aboutBg})` }}
-      >
-        <h1>Portfolio</h1>
+      <section className="full-bleed">
+        <div
+          className="portfolio-header portfolio-background-image"
+          style={{ backgroundImage: `url(${aboutBg})` }}
+        >
+          <h1>Portfolio</h1>
+        </div>
       </section>
 
       <section className="portfolio-content">
