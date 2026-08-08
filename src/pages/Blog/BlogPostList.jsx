@@ -2,7 +2,7 @@ import BlogPostCard from "./BlogPostCard";
 
 const BlogPostList = ({ posts, onOpen }) => {
   return (
-    <div className="blog-post-list">
+    <div className="blog__list">
       {posts.map((post) => (
         <BlogPostCard key={post.id} post={post} onOpen={onOpen} />
       ))}

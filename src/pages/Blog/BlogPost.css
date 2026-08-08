@@ -1,4 +1,8 @@
-.blog-post-page {
+/* --------------------------------------------- */
+/* BLOG SINGLE POST PAGE (BEM)                   */
+/* --------------------------------------------- */
+
+.blog__post {
   max-width: 760px;
   margin: 0 auto;
   padding: 120px 24px 80px;
@@ -6,17 +10,38 @@
   color: #333;
 }
 
-
-.blog-post-title {
+/* Title */
+.blog__post-title {
   font-family: "Lust", Georgia, serif;
   font-size: 25px;
   margin-bottom: 24px;
   line-height: 1.2;
 }
 
-
-.blog-post-page h2 {
+/* Section headings inside the article */
+.blog__post h2 {
   font-size: 28px;
   margin: 40px 0 16px;
   font-weight: 600;
+}
+
+/* --------------------------------------------- */
+/* MOBILE VERSION                                */
+/* --------------------------------------------- */
+
+@media (max-width: 767px) {
+  .blog__post {
+    padding: 80px 16px 60px;
+    line-height: 1.6;
+  }
+
+  .blog__post-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .blog__post h2 {
+    font-size: 24px;
+    margin: 32px 0 12px;
+  }
 }

@@ -355,14 +355,14 @@ const Blog = () => {
   }, [isModalOpen, activeArticle]);
 
   return (
-    <div className="blog-page">
+    <div className="blog">
       {/* HEADER */}
-      <section className="blog-header">
+      <section className="blog__header full-bleed">
         <section
-          className="blog-background-image"
+          className="blog__background-image"
           style={{ backgroundImage: `url(${aboutBg})` }}
         >
-          <h1>Articles</h1>
+          <h1 className="blog__title">Articles</h1>
         </section>
       </section>
 
@@ -398,7 +398,7 @@ const Blog = () => {
       </Modal>
 
       {/* SEARCH FORM */}
-      <div className="blog-search">
+      <div className="blog__search">
         <input
           type="text"
           placeholder="Search articles..."
