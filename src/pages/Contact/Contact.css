@@ -1,7 +1,6 @@
 .contact {
   min-height: 100vh;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
 
   padding-top: 120px;
@@ -9,6 +8,10 @@
   margin: 0 auto;
   padding-left: 24px;
   padding-right: 24px;
+}
+
+.contact__header {
+  text-align: center;
 }
 
 .contact__section {
@@ -19,7 +22,6 @@
 
 .contact__list {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   gap: 18px;
@@ -28,7 +30,6 @@
 
 .contact__item {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
 }
@@ -47,6 +48,33 @@
 
 .contact__item a:hover {
   text-decoration: underline;
+}
+
+.full-bleed {
+  width: 100vw;
+  height: 200px; /* optional: adjust height as needed */
+  margin-left: calc(50% - 50vw);
+}
+.contact__background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  width: 100%; /* FIX: replaces 100vw */
+  height: 200px; /* keeps hero height */
+  padding: 60px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+.contact__title {
+  font-size: 48px;
+  font-weight: 700;
 }
 
 .page {

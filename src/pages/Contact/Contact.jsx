@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div className="contact">
       {/* Header Section */}
-      <section className="contact__header">
+      <section className="contact__header full-bleed">
         <div
           className="contact__background-image"
           style={{ backgroundImage: `url(${aboutBg})` }}
