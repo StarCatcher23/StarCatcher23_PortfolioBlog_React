@@ -1,100 +1,126 @@
-import { useEffect, useState, useCallback } from "react";
+import {
+  useEffect,
+  useState,
+  useCallback,
+  startTransition,
+  useRef,
+} from "react";
 import avatar from "../../assets/myavatar.png";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
 import Preloader from "../../components/Preloader/preloader";
 
 const localQuotes = [
-  {
-    quote: "You are capable of amazing things.",
-    author: "Anonymous",
-  },
-  {
-    quote: "Every moment is a fresh beginning.",
-    author: "T.S. Eliot",
-  },
+  { quote: "You are capable of amazing things.", author: "Anonymous" },
+  { quote: "Every moment is a fresh beginning.", author: "T.S. Eliot" },
   {
     quote: "Be gentle with yourself. You’re doing the best you can.",
     author: "Anonymous",
   },
-  {
-    quote: "Small progress is still progress.",
-    author: "Anonymous",
-  },
-  {
-    quote: "Healing is not linear.",
-    author: "Anonymous",
-  },
-  {
-    quote: "Believe in the person you are becoming.",
-    author: "Anonymous",
-  },
-  {
-    quote: "You deserve to take up space.",
-    author: "Anonymous",
-  },
+  { quote: "Small progress is still progress.", author: "Anonymous" },
+  { quote: "Healing is not linear.", author: "Anonymous" },
+  { quote: "Believe in the person you are becoming.", author: "Anonymous" },
+  { quote: "You deserve to take up space.", author: "Anonymous" },
   {
     quote: "Growth is uncomfortable because you’ve never been here before.",
     author: "Anonymous",
   },
-  {
-    quote: "You are stronger than your struggles.",
-    author: "Anonymous",
-  },
-  {
-    quote: "Your story isn’t over yet.",
-    author: "Anonymous",
-  },
+  { quote: "You are stronger than your struggles.", author: "Anonymous" },
+  { quote: "Your story isn’t over yet.", author: "Anonymous" },
 ];
 
 function Home() {
   const [quote, setQuote] = useState(localQuotes[0].quote);
   const [author, setAuthor] = useState(localQuotes[0].author);
-  const [loading, setLoading] = useState(true); // shimmer state
-  const [fade, setFade] = useState(false); // fade-in animation
+  const [loading, setLoading] = useState(true);
+  const [fade, setFade] = useState(false);
+
+  const isFirstRenderRef = useRef(true);
 
   function getRandomQuote() {
-    const randomQuote =
-      localQuotes[Math.floor(Math.random() * localQuotes.length)];
-    return randomQuote;
+    return localQuotes[Math.floor(Math.random() * localQuotes.length)];
   }
 
+  // Used ONLY for the "New Quote" button
   const loadZenQuote = useCallback(async () => {
     try {
-      setLoading(true);
-      setFade(false);
-
       const response = await fetch("https://dummyjson.com/quotes");
 
-      if (!response.ok) {
-        console.log("API failed — using fallback quotes");
-        throw new Error("Unable to load quote");
-      }
+      if (!response.ok) throw new Error("Unable to load quote");
 
       const data = await response.json();
-      console.log("Loaded", data.quotes.length, "quotes");
-
       const randomQuote =
         data.quotes[Math.floor(Math.random() * data.quotes.length)];
 
-      setQuote(randomQuote.quote);
-      setAuthor(randomQuote.author || "Anonymous");
+      Promise.resolve().then(() => {
+        startTransition(() => {
+          setQuote(randomQuote.quote);
+          setAuthor(randomQuote.author || "Anonymous");
+        });
+      });
     } catch (error) {
       console.log("Error:", error);
       const fallbackQuote = getRandomQuote();
-      setQuote(fallbackQuote.quote);
-      setAuthor(fallbackQuote.author);
+      Promise.resolve().then(() => {
+        startTransition(() => {
+          setQuote(fallbackQuote.quote);
+          setAuthor(fallbackQuote.author);
+        });
+      });
     } finally {
       setTimeout(() => {
-        setLoading(false);
-        setFade(true);
+        Promise.resolve().then(() => {
+          startTransition(() => {
+            setLoading(false);
+            setFade(true);
+          });
+        });
       }, 300);
     }
   }, []);
 
   useEffect(() => {
-    loadZenQuote();
-  }, [loadZenQuote]);
+    if (!isFirstRenderRef.current) return;
+    isFirstRenderRef.current = false;
+
+    let timeoutId;
+
+    Promise.resolve().then(async () => {
+      try {
+        const response = await fetch("https://dummyjson.com/quotes");
+
+        if (!response.ok) throw new Error("Unable to load quote");
+
+        const data = await response.json();
+        const randomQuote =
+          data.quotes[Math.floor(Math.random() * data.quotes.length)];
+
+        startTransition(() => {
+          setQuote(randomQuote.quote);
+          setAuthor(randomQuote.author || "Anonymous");
+        });
+      } catch (error) {
+        console.log("Error:", error);
+        const fallbackQuote = getRandomQuote();
+        startTransition(() => {
+          setQuote(fallbackQuote.quote);
+          setAuthor(fallbackQuote.author);
+        });
+      } finally {
+        timeoutId = setTimeout(() => {
+          startTransition(() => {
+            setLoading(false);
+            setFade(true);
+          });
+        }, 300);
+      }
+    });
+
+    // ✔ Cleanup OUTSIDE finally (safe)
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
 
   return (
     <div className="page">

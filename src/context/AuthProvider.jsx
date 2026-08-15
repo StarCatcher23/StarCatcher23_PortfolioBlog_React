@@ -1,6 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-
-export const AuthContext = createContext();
+import { useState, useEffect } from "react";
+import { AuthContext } from "./AuthContext";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -9,7 +8,7 @@ export function AuthProvider({ children }) {
     const savedUser = localStorage.getItem("user");
 
     if (savedUser) {
-      // Avoid setState directly inside effect (React 19 rule)
+      // Avoid setState directly inside effect
       Promise.resolve().then(() => {
         setUser(JSON.parse(savedUser));
       });

@@ -42,6 +42,7 @@ function App() {
         onRegister={(data) => {
           console.log("Register data:", data);
           setIsRegisterOpen(false);
+          setIsLoginOpen(true);
         }}
         onOpenLogin={() => {
           setIsRegisterOpen(false);
