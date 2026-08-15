@@ -91,6 +91,22 @@
   color: #a98bd1; /* lighter lavender hover */
 }
 
+.navbar__btn {
+  background: none;
+  border: none;
+  color: black;
+  font-weight: 550;
+  font-size: 21px;
+  font-family: "Lust", Georgia, serif;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.navbar__btn:hover {
+  color: #a98bd1; /* lighter lavender hover */
+}
+
 @media (max-width: 767px) {
   .navbar {
     padding-left: 16px;

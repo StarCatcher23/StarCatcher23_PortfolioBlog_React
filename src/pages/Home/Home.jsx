@@ -93,8 +93,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    // defer invocation so state updates don't run synchronously inside the effect
-    Promise.resolve().then(() => loadZenQuote());
+    loadZenQuote();
   }, [loadZenQuote]);
 
   return (

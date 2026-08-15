@@ -9,6 +9,7 @@ export function AuthProvider({ children }) {
     const savedUser = localStorage.getItem("user");
 
     if (savedUser) {
+      // Avoid setState directly inside effect (React 19 rule)
       Promise.resolve().then(() => {
         setUser(JSON.parse(savedUser));
       });
@@ -33,8 +34,8 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout }}>
       {children}
-    </AuthContext>
+    </AuthContext.Provider>
   );
 }

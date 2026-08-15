@@ -1,29 +1,26 @@
 import "./Profile.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import useFormWithValidation from "../hooks/useFormWithValidation";
 import Sidebar from "../Sidebar/Sidebar";
 
 export default function Profile({ user, onUpdateUser, onSignOut, isLoading }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  const { values, handleChange, errors, resetForm, isValid } =
-    useFormWithValidation({
+  const defaultValues = useMemo(
+    () => ({
       name: user.name,
-      avatar: user.avatar, // FIXED
+      avatar: user.avatar,
       email: user.email,
-    });
+    }),
+    [user.name, user.avatar, user.email],
+  );
+
+  const { values, handleChange, errors, resetForm, isValid } =
+    useFormWithValidation(defaultValues);
 
   useEffect(() => {
-    resetForm(
-      {
-        name: user.name,
-        avatar: user.avatar,
-        email: user.email,
-      },
-      {},
-      true,
-    );
-  }, [user, resetForm]);
+    resetForm(defaultValues, {}, true);
+  }, [defaultValues, resetForm]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

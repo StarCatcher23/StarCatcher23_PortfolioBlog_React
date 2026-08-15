@@ -1,6 +1,6 @@
 import useFormWithValidation from "../../components/hooks/useFormWithValidation";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import "./LoginModal.css";
 
 const LoginModal = ({
@@ -10,19 +10,22 @@ const LoginModal = ({
   isLoading,
   onOpenRegister,
 }) => {
-  const defaultValues = {
-    email: "",
-    password: "",
-  };
+  const defaultValues = useMemo(
+    () => ({
+      email: "",
+      password: "",
+    }),
+    [],
+  );
 
   const { values, handleChange, errors, resetForm, isValid } =
     useFormWithValidation(defaultValues);
 
   useEffect(() => {
     if (!isOpen) {
-      resetForm({}, {}, false);
+      resetForm(defaultValues, {}, false);
     }
-  }, [isOpen, resetForm]);
+  }, [isOpen, resetForm, defaultValues]);
 
   function handleSubmit(e) {
     e.preventDefault();

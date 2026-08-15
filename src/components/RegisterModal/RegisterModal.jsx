@@ -1,7 +1,7 @@
 import "./RegisterModal.css";
 import useFormWithValidation from "../../components/hooks/useFormWithValidation";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 const RegisterModal = ({
   isOpen,
@@ -10,21 +10,24 @@ const RegisterModal = ({
   isLoading,
   onOpenLogin,
 }) => {
-  const defaultValues = {
-    name: "",
-    avatar: "",
-    email: "",
-    password: "",
-  };
+  const defaultValues = useMemo(
+    () => ({
+      name: "",
+      avatar: "",
+      email: "",
+      password: "",
+    }),
+    [],
+  );
 
   const { values, handleChange, errors, resetForm, isValid } =
     useFormWithValidation(defaultValues);
 
   useEffect(() => {
     if (!isOpen) {
-      resetForm();
+      resetForm(defaultValues, {}, false);
     }
-  }, [isOpen, resetForm]);
+  }, [isOpen, resetForm, defaultValues]);
 
   function handleSubmit(e) {
     e.preventDefault();

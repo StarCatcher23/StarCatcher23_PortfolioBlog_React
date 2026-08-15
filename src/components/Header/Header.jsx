@@ -1,15 +1,11 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
+import "./Header.css";
 
-function App() {
+const Header = () => {
   return (
-    <>
-      <Header />
-      <Home />
-      <Footer />
-    </>
+    <header className="header">
+      <h1>Header</h1>
+    </header>
   );
-}
+};
 
-export default App;
+export default Header;

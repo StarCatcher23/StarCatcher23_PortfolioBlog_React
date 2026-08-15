@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./NavBar.css";
 
-function NavBar() {
+function NavBar({ onLoginClick, onRegisterClick }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -12,10 +12,14 @@ function NavBar() {
       <ul className="navbar__links">
         {/*Login + Register*/}
         <li>
-          <Link to="/login">Login</Link>
+          <button className="navbar__btn" onClick={onLoginClick}>
+            Login
+          </button>
         </li>
         <li>
-          <Link to="/register">Register</Link>
+          <button className="navbar__btn" onClick={onRegisterClick}>
+            Register
+          </button>
         </li>
 
         {/*Dropdown Menu*/}
@@ -29,19 +33,29 @@ function NavBar() {
           {open && (
             <ul className="dropdown-menu">
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/home" onClick={() => setOpen(false)}>
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/about">About Me</Link>
+                <Link to="/about" onClick={() => setOpen(false)}>
+                  About Me
+                </Link>
               </li>
               <li>
-                <Link to="/portfolio">Portfolio</Link>
+                <Link to="/portfolio" onClick={() => setOpen(false)}>
+                  Portfolio
+                </Link>
               </li>
               <li>
-                <Link to="/blog">Blog</Link>
+                <Link to="/blog" onClick={() => setOpen(false)}>
+                  Blog
+                </Link>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <Link to="/contact" onClick={() => setOpen(false)}>
+                  Contact
+                </Link>
               </li>
             </ul>
           )}
