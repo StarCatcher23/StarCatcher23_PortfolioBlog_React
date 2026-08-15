@@ -7,7 +7,12 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
-    if (savedUser) setUser(JSON.parse(savedUser));
+
+    if (savedUser) {
+      Promise.resolve().then(() => {
+        setUser(JSON.parse(savedUser));
+      });
+    }
   }, []);
 
   const login = (email) => {
@@ -28,8 +33,8 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext value={{ user, login, signup, logout }}>
       {children}
-    </AuthContext.Provider>
+    </AuthContext>
   );
 }

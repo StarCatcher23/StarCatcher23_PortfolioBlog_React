@@ -1,30 +1,50 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./NavBar.css";
 
 function NavBar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="navbar">
-      <h1 className="navbar__brand">Sorim Tim</h1>
+      <h1 className="navbar__name">Sorim Tim</h1>
 
       <ul className="navbar__links">
-        <li className="navbar__item">
-          <Link to="/" className="navbar__link">Home</Link>
+        {/*Login + Register*/}
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/register">Register</Link>
         </li>
 
-        <li className="navbar__item">
-          <Link to="/about" className="navbar__link">About Me</Link>
-        </li>
+        {/*Dropdown Menu*/}
+        <li
+          className="dropdown"
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+        >
+          <button className="dropdown-btn">Menu ▼ </button>
 
-        <li className="navbar__item">
-          <Link to="/portfolio" className="navbar__link">Portfolio</Link>
-        </li>
-
-        <li className="navbar__item">
-          <Link to="/blog" className="navbar__link">Blog</Link>
-        </li>
-
-        <li className="navbar__item">
-          <Link to="/contact" className="navbar__link">Contact</Link>
+          {open && (
+            <ul className="dropdown-menu">
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About Me</Link>
+              </li>
+              <li>
+                <Link to="/portfolio">Portfolio</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
+          )}
         </li>
       </ul>
     </nav>
