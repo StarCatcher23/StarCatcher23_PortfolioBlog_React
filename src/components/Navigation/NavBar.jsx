@@ -28,7 +28,7 @@ function NavBar({ onLoginClick, onRegisterClick }) {
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
         >
-          <button className="dropdown-btn">Menu ▼ </button>
+          <button className="dropdown-btn">Menu</button>
 
           {open && (
             <ul className="dropdown-menu">

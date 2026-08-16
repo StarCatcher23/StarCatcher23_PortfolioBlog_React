@@ -5,6 +5,7 @@ import visionBoard from "../../assets/visionboard.png";
 import journeyImg from "../../assets/journeyImg.jpg";
 import portfolioImg from "../../assets/portfolioImg.jpg";
 import mentalImg from "../../assets/mentalImg.jpg";
+import interviewImg from "../../assets/interview.jpg";
 
 import BlogPostList from "./BlogPostList";
 import FeaturedArticle from "./FeaturedArticle";
@@ -179,7 +180,7 @@ const Blog = () => {
             is, kudos to them — truly. I’m learning at my own pace, and I’m
             being challenged constantly. But I believe these obstacles are
             necessary. Hands‑on experience is the best teacher. Reading and
-            watching tutorials can only take you so far; eventually, you have to
+            watching tutorials can only take you so far; eventually, I had to
             build, break, fix, and rebuild. Even with hands‑on work, I still
             find myself reading, watching, documenting, and then reading again.
             Could I have a more efficient process? Maybe. But this is how it’s
@@ -299,17 +300,16 @@ const Blog = () => {
             Coding is hard. Believe me when I say I’ve heard this from many
             people in TripleTen Bootcamp. We feel like imposters. We feel like
             we still have so much more to learn. But having support — tutors,
-            classmates, other tech learners — makes a huge difference. You have
-            to connect with others so you can get through your journey and help
+            classmates, other tech learners — makes a huge difference. I had to
+            connect with others so you can get through your journey and help
             pull others along the way.
           </p>
 
           <p>
-            If you have any ideas that could help software engineers, beginners,
-            or anyone currently on their tech journey, I’d love to hear them.
+            If I had any ideas that could help software engineers, beginners, or
+            anyone currently on their tech journey, I’d love to hear them.
           </p>
           <p>Comment section coming soon. Send me an email if you'd like.</p>
-
           <div className="email-button">
             <button
               className="email-button__btn"
@@ -324,6 +324,111 @@ const Blog = () => {
       ),
       date: "July 2026",
       image: mentalImg,
+    },
+
+    {
+      id: 4,
+      title: "Career Search Journey",
+      preview: "The Emotional Rollercoaster of Job Hunting in Tech",
+      fullText: (
+        <>
+          <p>
+            I started the job search for my first tech role way before I
+            completed my SE Program at TripleTen Bootcamp. TripleTen actually
+            starts the career journey early on in the program, so I jumped in
+            early. With that being said, I’ve applied to many places — some
+            tech‑related, some healthcare‑related, and some that blended both.
+            That’s because I come from a healthcare background.
+          </p>
+
+          <p>
+            The job search and interview process has been an emotional
+            rollercoaster, to say the least. I’ve had to look for roles that I
+            thought matched my skills and qualifications. I’ve had to alter my
+            resume and cover letter for each role. I’ve had to apply to each
+            position and re‑enter the same information that’s already on the
+            resume I just attached. I’ve had to keep track of all the places I
+            applied to, the documents I submitted, and the outcomes of those
+            applications. So while you’re receiving rejection emails throughout
+            the week, you’re also keeping track of them.
+          </p>
+
+          <p>
+            In the middle of all this, I needed to complete more projects, wait
+            impatiently for externship opportunities, research other
+            opportunities, and network. And all of this is done after the
+            full‑time job I have to support myself and my family. Oh, and don’t
+            forget — I also have to do tech interview practice and continue
+            learning web development and Google Cloud deployment.
+          </p>
+
+          <p>
+            This may sound like I’m complaining. I’m not. This is just the
+            reality of my life and my career journey. I need to get to where I
+            want to be, and the only way to do that is by doing.
+          </p>
+
+          <p>
+            Since applying for tech roles, I’ve had the opportunity to interview
+            for an Application Analyst role and one tech role. For the analyst
+            role, I interviewed with at least nine people. I was sure I got the
+            job. I was invested and ready to continue on this new path with what
+            seemed like great people to work and grow with. I didn’t get the
+            job. It was definitely a bummer. I had to remind myself what was at
+            stake. Quitting wasn’t an option.
+          </p>
+
+          <p>
+            I also couldn’t allow negative thoughts to consume me. I continued
+            researching job, internship, and externship opportunities. I
+            continued applying. The next week after the rejection, I got an
+            email to interview for a tech role. Was this fate? I don’t know. I
+            do know that I will hope for the best, but I won’t expect an
+            automatic yes.
+          </p>
+
+          <p>
+            I’m not giving up — I’m just guarding my mental health so I can keep
+            moving. I’ve seen and heard other graduates land their first tech
+            role. There’s never envy from my end, but I always try to figure out
+            what steps they took so I can be better at my own process.
+          </p>
+
+          <p>
+            Job searching is long and hard, and it can sometimes seem
+            impossible. I still remind myself that doing nothing will definitely
+            give me negative results. The only option is forward.
+          </p>
+
+          <p>
+            Here’s another reminder to find ways to keep up with your mental and
+            physical health. It’s okay to take a break. Exercise has been the
+            best medicine for me — I just have to be consistent with it. I’m
+            still not perfect, but I believe that even if your goal is an hour
+            and you only got thirty minutes in today, you’re still winning.
+          </p>
+
+          <p>
+            And on a lighter note — does anyone else have to chase after their
+            dog for love and affection like I do? Because wow, my dog acts like
+            I’m asking for a signed celebrity autograph every time I try to hug
+            him. Some dogs love affection, but only on their terms. Sometimes
+            they want cuddles, and other times they want you to run laps around
+            the house just to earn a single head scratch. Honestly, it’s a whole
+            personality trait.
+          </p>
+
+          <p>
+            Even in moments like that, I’m reminded that life is full of small
+            joys and funny distractions. Whether it’s chasing your dog for a hug
+            or carving out thirty minutes to exercise, those little things
+            matter. They keep you grounded while you’re grinding toward your
+            goals.
+          </p>
+        </>
+      ),
+      date: "August 2026",
+      image: interviewImg,
     },
   ]);
 
