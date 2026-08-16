@@ -1,0 +1,156 @@
+/* --------------------------------------------- */
+/* ABOUT PAGE (BEM)                              */
+/* --------------------------------------------- */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  padding-top: 96px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Lust", Georgia, serif;
+  padding-left: 24px;
+  padding-right: 24px;
+  position: relative;
+  z-index: 0;
+}
+
+
+
+/* Decorative cartoon background */
+.about::before {
+  content: "";
+  position: absolute;
+  top: 360px;
+  right: -40px;
+  width: 500px;
+  height: 500px;
+  background-image: url("../../assets/cartoonself.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Hero background */
+.about__background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  width: 100%;
+  height: 200px;
+  padding: 60px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+/* Full-bleed hero */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+/* Main content */
+.about__content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 40px;
+}
+
+.about__paragraph {
+  margin-bottom: 24px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------- */
+/* MOBILE VERSION                                */
+/* --------------------------------------------- */
+
+@media (max-width: 767px) {
+  .about {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Shrink hero height + padding */
+  .about__background-image {
+    height: 160px;
+    padding: 32px 16px;
+    background-attachment: scroll; /* prevents jitter on mobile */
+  }
+
+  /* Disable full-bleed on mobile */
+  .full-bleed {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* Scale down title */
+  .about__title {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  /* Content spacing */
+  .about__content {
+    padding: 24px 0;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Cartoon background reposition */
+  .about::before {
+    top: 480px;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    opacity: 0.18;
+  }
+}
+
+/* --------------------------------------------- */
+/* TABLET VERSION                                 */
+/* --------------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .about__background-image {
+    height: 180px;
+    padding: 48px 20px;
+  }
+}
+
+/* --------------------------------------------- */
+/* DESKTOP VERSION                                */
+/* --------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .about {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}

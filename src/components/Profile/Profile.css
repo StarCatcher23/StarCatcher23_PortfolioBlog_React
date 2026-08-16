@@ -1,0 +1,112 @@
+/* ============================
+   PROFILE PAGE LAYOUT
+   ============================ */
+
+.profile {
+  max-width: 900px;
+  margin: 120px auto 60px; /* space for fixed navbar */
+  padding: 20px;
+  font-family: "Lust", Georgia, serif;
+  color: #212121;
+}
+
+.profile__title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* ============================
+   FORM WRAPPER
+   ============================ */
+
+.profile__form {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* ============================
+   EDIT FIELDS
+   ============================ */
+
+.profile__fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.profile__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.profile__input {
+  margin-top: 8px;
+  padding: 12px 14px;
+  font-size: 18px;
+  font-family: "Lust", Georgia, serif;
+  border: 1px solid rgba(33, 33, 33, 0.3);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.profile__input:focus {
+  outline: none;
+  border-color: #a98bd1;
+  box-shadow: 0 0 0 2px rgba(169, 139, 209, 0.3);
+}
+
+.profile__error {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #d9534f;
+}
+
+/* ============================
+   SAVE BUTTON
+   ============================ */
+
+.profile__save-btn {
+  padding: 12px 20px;
+  font-size: 18px;
+  font-family: "Lust", Georgia, serif;
+  background-color: #212121;
+  color: #fcf5e5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 160px;
+  transition: opacity 0.3s ease;
+}
+
+.profile__save-btn:hover {
+  opacity: 0.8;
+}
+
+.profile__save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;  
+}
+
+
+@media screen and (max-width: 768px) {
+  .profile {
+    margin: 80px auto 40px;
+    padding: 16px;
+  }
+
+  .profile__form {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .profile__save-btn {
+    width: 100%;
+  }
+    
+}

@@ -1,0 +1,93 @@
+/* ============================
+   DROPDOWN CONTAINER
+   ============================ */
+
+.dropdown {
+  position: relative;        /* required so menu positions correctly */
+  display: inline-block;
+}
+
+/* ============================
+   DROPDOWN BUTTON
+   ============================ */
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  font-family: "Lust", Georgia, serif;
+  font-size: 21px;
+  font-weight: 550;
+  color: black;
+  cursor: pointer;
+  padding: 10px 14px;
+}
+
+.dropdown-btn:hover {
+  color: #a98bd1;
+}
+
+/* ============================
+   DROPDOWN MENU
+   ============================ */
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;                 /* sits directly under the button */
+  left: 0;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(6px);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 180px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* ============================
+   SHOW MENU ON HOVER
+   ============================ */
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ============================
+   MENU ITEMS
+   ============================ */
+
+.dropdown-menu li {
+  padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+  color: black;
+  font-family: "Lust", Georgia, serif;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f2e9ff;
+}
+
+.dropdown-menu li a:hover {
+  color: #a98bd1;
+}
+
+/* ============================
+   FIX NAVBAR CLIPPING
+   ============================ */
+
+.navbar {
+  overflow: visible !important;   /* critical: allows dropdown to extend */
+}

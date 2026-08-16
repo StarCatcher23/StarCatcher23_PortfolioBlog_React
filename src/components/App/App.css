@@ -1,0 +1,98 @@
+/* --------------------------------------------- */
+/* GLOBAL RESET & RESPONSIVE BASICS              */
+/* --------------------------------------------- */
+
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------- */
+/* GLOBAL TYPOGRAPHY                             */
+/* --------------------------------------------- */
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+p,
+a,
+li,
+div {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Mobile typography */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  p,
+  a,
+  li,
+  div {
+    font-size: 16px;
+  }
+}
+
+/* --------------------------------------------- */
+/* GLOBAL LAYOUT                                 */
+/* --------------------------------------------- */
+
+section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Full‑bleed hero sections */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+/* Disable full‑bleed on mobile */
+@media (max-width: 767px) {
+  .full-bleed {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* --------------------------------------------- */
+/* GLOBAL PAGE WRAPPER                           */
+/* --------------------------------------------- */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer always sticks to bottom */
+.footer {
+  margin-top: auto;
+  padding: 24px 40px;
+  text
+}
