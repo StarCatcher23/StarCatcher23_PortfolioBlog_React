@@ -306,8 +306,8 @@ const Blog = () => {
           </p>
 
           <p>
-            If I had any ideas that could help software engineers, beginners, or
-            anyone currently on their tech journey, I’d love to hear them.
+            If you have any ideas that could help software engineers, beginners,
+            or anyone currently on their tech journey, I’d love to hear them.
           </p>
           <p>Comment section coming soon. Send me an email if you'd like.</p>
           <div className="email-button">
