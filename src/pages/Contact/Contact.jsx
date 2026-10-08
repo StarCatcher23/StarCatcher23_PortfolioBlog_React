@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { sendMessage } from "../../api";
+
 import "./Contact.css";
 import aboutBg from "../../assets/Rectangle 4.png";
 import linkedinIcon from "../../assets/icons/linkedinIcon.png";
@@ -6,6 +9,24 @@ import githubIcon from "../../assets/icons/githubIcon.png";
 import Footer from "../../components/Footer/Footer";
 
 const Contact = () => {
+  // Contact form state
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("");
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      await sendMessage(form);
+      setStatus("Message sent successfully!");
+    } catch {
+      setStatus("Something went wrong.");
+    }
+  }
+
   return (
     <div className="contact">
       {/* Header Section */}
@@ -18,7 +39,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Links Section */}
       <section className="contact__section">
         <div className="contact__list">
           {/* LinkedIn */}
@@ -47,6 +68,33 @@ const Contact = () => {
             </a>
           </div>
         </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="contact__form-section">
+        <form className="contact__form" onSubmit={handleSubmit}>
+          <input
+            name="name"
+            placeholder="Your Name"
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="email"
+            placeholder="Your Email"
+            onChange={handleChange}
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Send Message</button>
+
+          {status && <p className="contact__status">{status}</p>}
+        </form>
       </section>
 
       <Footer />

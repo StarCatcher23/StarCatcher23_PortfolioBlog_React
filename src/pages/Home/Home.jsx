@@ -5,7 +5,7 @@ import {
   startTransition,
   useRef,
 } from "react";
-import avatar from "../../assets/myavatar.png";
+import avatar from "../../assets/icons/selfie.jpg";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
 import Preloader from "../../components/Preloader/preloader";
