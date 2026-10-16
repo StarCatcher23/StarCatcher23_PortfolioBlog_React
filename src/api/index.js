@@ -1,7 +1,4 @@
-// Base URL for your backend API.
-// In development, this points to your local Express server.
-// Later, you'll replace this with your deployed backend URL.
-const API_BASE = "http://localhost:3000/api";
+import { API_BASE } from "./config.js";
 
 // Fetch all blog posts from the backend.
 // This will be used inside your Blog page to load posts dynamically.
