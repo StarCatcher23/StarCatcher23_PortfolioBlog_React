@@ -2,7 +2,10 @@ import { API_BASE } from "./config.js";
 
 // Fetch all blog posts
 export async function fetchPosts() {
-  const res = await fetch(`${API_BASE}/api/posts`);
+  const res = await fetch(`${API_BASE}/posts`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch posts (${res.status})`);
+  }
   return res.json();
 }
 

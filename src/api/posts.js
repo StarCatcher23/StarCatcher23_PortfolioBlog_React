@@ -1,7 +1,7 @@
 import { API_BASE } from "./config.js";
 
 export async function fetchPosts() {
-  const response = await fetch(`${API_BASE}/api/posts`);
+  const response = await fetch(`${API_BASE}/posts`);
   if (!response.ok) {
     throw new Error("Failed to fetch posts");
   }

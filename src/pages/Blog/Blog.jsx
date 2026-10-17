@@ -12,13 +12,19 @@ import { fetchPosts } from "../../api";
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState([]);
+  const [postsError, setPostsError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeArticle, setActiveArticle] = useState(null);
   const activeArticleRef = useRef(null);
 
   // Fetch posts from the API on mount
   useEffect(() => {
-    fetchPosts().then(setPosts);
+    fetchPosts()
+      .then(setPosts)
+      .catch((error) => {
+        console.error("Unable to load blog posts:", error);
+        setPostsError(error.message);
+      });
   }, []);
 
   // Featured article content
@@ -154,15 +160,19 @@ const Blog = () => {
       </div>
 
       {/* BLOG POSTS (from API) */}
-      <BlogPostList
-        posts={filteredPosts.map((post) => ({
-          ...post,
-          id: post.id || post._id,
-          preview: post.preview || post.content,
-          fullText: post.fullText || post.content,
-        }))}
-        onOpen={(post) => openArticleModal(post)}
-      />
+      {postsError ? (
+        <p role="alert">Unable to load blog posts: {postsError}</p>
+      ) : (
+        <BlogPostList
+          posts={filteredPosts.map((post) => ({
+            ...post,
+            id: post.id || post._id,
+            preview: post.preview || post.content,
+            fullText: post.fullText || post.content,
+          }))}
+          onOpen={(post) => openArticleModal(post)}
+        />
+      )}
     </div>
   );
 };
