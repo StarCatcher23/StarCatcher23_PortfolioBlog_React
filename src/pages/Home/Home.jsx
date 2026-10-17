@@ -174,6 +174,14 @@ function Home() {
               My work is guided by curiosity, growth, and the belief that
               technology can support people in meaningful ways.
             </p>
+
+            {/* SITE STATUS NOTICE */}
+            <p className="home__status">
+              <h3 className="home__status-label">**Site in Progress**</h3>
+              My portfolio and blog are currently under development. Some
+              features and pages may not be fully functional yet. Thanks for
+              stopping by as I continue building!
+            </p>
           </section>
 
           <Footer />
