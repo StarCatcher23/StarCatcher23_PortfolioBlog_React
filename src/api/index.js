@@ -2,7 +2,7 @@ import { API_BASE } from "./config.js";
 
 // Fetch all blog posts
 export async function fetchPosts() {
-  const res = await fetch(`${API_BASE}/posts`);
+  const res = await fetch(`${API_BASE}/api/posts`);
   return res.json();
 }
 
