@@ -62,7 +62,6 @@
 
 .blog__like-button,
 .blog__save-button,
-.blog__comments-toggle,
 .blog__comment-form button,
 .blog__login-prompt button {
   border: 0;
@@ -78,6 +77,21 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+.blog__save-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.blog__bookmark-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.blog__save-button_saved {
+  color: #5a4690;
 }
 
 .blog__like-button span:first-child {
@@ -105,6 +119,11 @@
   padding: 0.75rem;
   background: #faf9fc;
   border-radius: 8px;
+}
+
+.blog__comments h3 {
+  margin: 0;
+  font-size: 1.1rem;
 }
 
 .blog__comment {

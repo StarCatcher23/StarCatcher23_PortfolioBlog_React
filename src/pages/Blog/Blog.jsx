@@ -4,6 +4,7 @@ import aboutBg from "../../assets/Rectangle 4.png";
 import visionBoard from "../../assets/visionboard.png";
 
 import BlogPostList from "./BlogPostList";
+import BlogPostInteractions from "./BlogPostInteractions";
 import FeaturedArticle from "./FeaturedArticle";
 import Modal from "../../components/Modal/Modal";
 import ModalThumbnailGrid from "../../components/Modal/ModalThumbnailGrid";
@@ -225,6 +226,22 @@ const Blog = ({ onLoginRequest }) => {
             {activeArticle.thumbnails && (
               <ModalThumbnailGrid items={activeArticle.thumbnails} />
             )}
+
+            {activeArticle.id && (
+              <BlogPostInteractions
+                key={activeArticle.id}
+                post={activeArticle}
+                user={user}
+                token={token}
+                liked={interactions.likedPostIds.includes(activeArticle.id)}
+                saved={interactions.savedPostIds.includes(activeArticle.id)}
+                interactionsLoading={interactionsLoading}
+                interactionsError={interactionsError}
+                onLoginRequest={onLoginRequest}
+                onLikeChange={updateLikedPost}
+                onSaveChange={updateSavedPost}
+              />
+            )}
           </>
         )}
       </Modal>
@@ -256,14 +273,6 @@ const Blog = ({ onLoginRequest }) => {
             fullText: post.fullText || post.content,
           }))}
           onOpen={(post) => openArticleModal(post)}
-          user={user}
-          token={token}
-          interactions={interactions}
-          interactionsLoading={interactionsLoading}
-          interactionsError={interactionsError}
-          onLoginRequest={onLoginRequest}
-          onLikeChange={updateLikedPost}
-          onSaveChange={updateSavedPost}
         />
       )}
     </div>
