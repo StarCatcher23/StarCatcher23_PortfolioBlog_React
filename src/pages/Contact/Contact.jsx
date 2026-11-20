@@ -26,7 +26,10 @@ const Contact = () => {
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
     );
 
-    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    const composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      contactEmail,
+    )}&su=${subject}&body=${body}`;
+    window.open(composeUrl, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -76,8 +79,8 @@ const Contact = () => {
       <section className="contact__form-section">
         <form className="contact__form" onSubmit={handleSubmit}>
           <p className="contact__form-help">
-            Submitting opens your email app. Review the message and press Send.
-            If it doesn’t open, email me at{" "}
+            Submitting opens Gmail in a new tab. Review the message and press
+            Send. If Gmail doesn’t open, email me at{" "}
             <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
           </p>
           <input
@@ -102,7 +105,7 @@ const Contact = () => {
             onChange={handleChange}
             required
           />
-          <button type="submit">Open Email App</button>
+          <button type="submit">Open Gmail to Send</button>
         </form>
       </section>
 
