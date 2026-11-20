@@ -161,40 +161,28 @@
   transform: translateY(-2px);
 }
 
-.contact__form button:disabled {
-  cursor: wait;
-  opacity: 0.7;
-  transform: none;
-}
-
 /* Button active */
 .contact__form button:active {
   transform: translateY(0);
 }
 
-/* Status message */
-.contact__status {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #4caf50; /* green for success */
+.contact__form-help {
+  margin: 0;
+  color: #555;
   text-align: center;
 }
 
-/* Error state (optional) */
-.contact__status.error {
-  color: #e53935;
-}
-
-.contact__status-link {
-  margin-top: -1rem;
+.contact__form-help a {
   color: #5a54e6;
-  text-align: center;
 }
 
-.contact__status-link:focus-visible {
+.contact__form-help a:focus-visible {
   outline: 2px solid #5a54e6;
   outline-offset: 3px;
+}
+
+.contact__form-help a:hover {
+  text-decoration: underline;
 }
 
 /* --------------------------------------------- */
@@ -284,8 +272,7 @@
     border-radius: 8px;
   }
 
-  /* Status text */
-  .contact__status {
+  .contact__form-help {
     font-size: 0.9rem;
   }
 }

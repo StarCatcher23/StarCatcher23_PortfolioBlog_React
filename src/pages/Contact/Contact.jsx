@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { sendMessage } from "../../api";
 
 import "./Contact.css";
 import aboutBg from "../../assets/Rectangle 4.png";
@@ -13,37 +12,21 @@ const contactEmail = "sorim.swe@gmail.com";
 const Contact = () => {
   // Contact form state
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setStatus(null);
-    setIsSubmitting(true);
+    const subject = encodeURIComponent(
+      `Portfolio contact message from ${form.name.trim() || "website visitor"}`,
+    );
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
+    );
 
-    try {
-      await sendMessage(form);
-      setStatus({
-        type: "success",
-        message: "Message emailed successfully!",
-      });
-      setForm({ name: "", email: "", message: "" });
-    } catch (error) {
-      setStatus({
-        type: "error",
-        message: error.message || "Unable to send your message.",
-        emailHref: `mailto:${contactEmail}?${new URLSearchParams({
-          subject: `Portfolio contact message from ${form.name.trim() || "website visitor"}`,
-          body: `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
-        })}`,
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -92,6 +75,11 @@ const Contact = () => {
       {/* Contact Form Section */}
       <section className="contact__form-section">
         <form className="contact__form" onSubmit={handleSubmit}>
+          <p className="contact__form-help">
+            Submitting opens your email app. Review the message and press Send.
+            If it doesn’t open, email me at{" "}
+            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+          </p>
           <input
             name="name"
             placeholder="Your Name"
@@ -114,23 +102,7 @@ const Contact = () => {
             onChange={handleChange}
             required
           />
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-
-          {status && (
-            <p
-              className={`contact__status ${status.type === "error" ? "error" : ""}`}
-              role={status.type === "error" ? "alert" : "status"}
-            >
-              {status.message}
-            </p>
-          )}
-          {status?.emailHref && (
-            <a className="contact__status-link" href={status.emailHref}>
-              Open an email with your message
-            </a>
-          )}
+          <button type="submit">Open Email App</button>
         </form>
       </section>
 
