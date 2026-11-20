@@ -8,6 +8,8 @@ import gmailIcon from "../../assets/icons/gmailIcon.png";
 import githubIcon from "../../assets/icons/githubIcon.png";
 import Footer from "../../components/Footer/Footer";
 
+const contactEmail = "sorim.swe@gmail.com";
+
 const Contact = () => {
   // Contact form state
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -34,6 +36,10 @@ const Contact = () => {
       setStatus({
         type: "error",
         message: error.message || "Unable to send your message.",
+        emailHref: `mailto:${contactEmail}?${new URLSearchParams({
+          subject: `Portfolio contact message from ${form.name.trim() || "website visitor"}`,
+          body: `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
+        })}`,
       });
     } finally {
       setIsSubmitting(false);
@@ -70,7 +76,7 @@ const Contact = () => {
           {/* Gmail */}
           <div className="contact__item">
             <img src={gmailIcon} alt="Gmail" className="contact__icon" />
-            <a href="mailto:sorim.swe@gmail.com">sorim.swe@gmail.com</a>
+            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
           </div>
 
           {/* GitHub */}
@@ -119,6 +125,11 @@ const Contact = () => {
             >
               {status.message}
             </p>
+          )}
+          {status?.emailHref && (
+            <a className="contact__status-link" href={status.emailHref}>
+              Open an email with your message
+            </a>
           )}
         </form>
       </section>

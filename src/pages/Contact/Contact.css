@@ -186,6 +186,17 @@
   color: #e53935;
 }
 
+.contact__status-link {
+  margin-top: -1rem;
+  color: #5a54e6;
+  text-align: center;
+}
+
+.contact__status-link:focus-visible {
+  outline: 2px solid #5a54e6;
+  outline-offset: 3px;
+}
+
 /* --------------------------------------------- */
 /* MOBILE VERSION                                */
 /* --------------------------------------------- */
