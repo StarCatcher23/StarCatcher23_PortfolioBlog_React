@@ -25,6 +25,134 @@
   font-weight: 600;
 }
 
+.blog__card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.blog__card-title {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+.blog__card-date {
+  margin: 0.5rem 0 0;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.blog__engagement {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.blog__engagement-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.blog__like-button,
+.blog__save-button,
+.blog__comments-toggle,
+.blog__comment-form button,
+.blog__login-prompt button {
+  border: 0;
+  border-radius: 6px;
+  padding: 0.45rem 0.65rem;
+  background: #f3f0f8;
+  color: #282333;
+  font: inherit;
+  cursor: pointer;
+}
+
+.blog__like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blog__like-button span:first-child {
+  color: #a73254;
+  font-size: 1.25rem;
+}
+
+.blog__like-button_liked span:first-child {
+  color: #d22555;
+}
+
+.blog__engagement button:hover:not(:disabled) {
+  background: #e9e1f4;
+}
+
+.blog__engagement button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.blog__comments {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #faf9fc;
+  border-radius: 8px;
+}
+
+.blog__comment {
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.blog__comment p {
+  margin: 0.25rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.blog__comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blog__comment-form textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.6rem;
+  border: 1px solid #d5d0dc;
+  border-radius: 6px;
+  font: inherit;
+  resize: vertical;
+}
+
+.blog__comment-form textarea:focus-visible,
+.blog__engagement button:focus-visible {
+  outline: 2px solid #6c63ff;
+  outline-offset: 2px;
+}
+
+.blog__comment-form button {
+  align-self: flex-start;
+}
+
+.blog__login-prompt {
+  margin: 0;
+}
+
+.blog__interaction-error {
+  margin: 0;
+  color: #b42318;
+  font-size: 0.9rem;
+}
+
 /* --------------------------------------------- */
 /* MOBILE VERSION                                */
 /* --------------------------------------------- */

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./Blog.css";
 import aboutBg from "../../assets/Rectangle 4.png";
 import visionBoard from "../../assets/visionboard.png";
@@ -7,7 +7,8 @@ import BlogPostList from "./BlogPostList";
 import FeaturedArticle from "./FeaturedArticle";
 import Modal from "../../components/Modal/Modal";
 import ModalThumbnailGrid from "../../components/Modal/ModalThumbnailGrid";
-import { fetchPosts } from "../../api";
+import { AuthContext } from "../../context/AuthContext.jsx";
+import { fetchPosts, fetchPostInteractions } from "../../api/posts.js";
 
 const normalizePostImage = (image) => {
   if (typeof image !== "string") return image;
@@ -27,10 +28,17 @@ const normalizePostImage = (image) => {
   }
 };
 
-const Blog = () => {
+const Blog = ({ onLoginRequest }) => {
+  const { user, token } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState([]);
   const [postsError, setPostsError] = useState("");
+  const [interactionState, setInteractionState] = useState({
+    token: null,
+    likedPostIds: [],
+    savedPostIds: [],
+    error: "",
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeArticle, setActiveArticle] = useState(null);
   const activeArticleRef = useRef(null);
@@ -44,6 +52,60 @@ const Blog = () => {
         setPostsError(error.message);
       });
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!token) return;
+
+    fetchPostInteractions(token)
+      .then((result) => {
+        if (!cancelled) setInteractionState({ token, ...result, error: "" });
+      })
+      .catch((error) => {
+        if (!cancelled) {
+          setInteractionState({
+            token,
+            likedPostIds: [],
+            savedPostIds: [],
+            error: error.message,
+          });
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [token]);
+
+  const currentInteractions =
+    interactionState.token === token ? interactionState : null;
+  const interactions = currentInteractions || {
+    likedPostIds: [],
+    savedPostIds: [],
+  };
+  const interactionsLoading = Boolean(token && !currentInteractions);
+  const interactionsError = currentInteractions?.error || "";
+
+  function updateLikedPost(postId, liked) {
+    setInteractionState((current) => {
+      if (current.token !== token) return current;
+      const likedPostIds = new Set(current.likedPostIds);
+      if (liked) likedPostIds.add(postId);
+      else likedPostIds.delete(postId);
+      return { ...current, likedPostIds: [...likedPostIds] };
+    });
+  }
+
+  function updateSavedPost(postId, saved) {
+    setInteractionState((current) => {
+      if (current.token !== token) return current;
+      const savedPostIds = new Set(current.savedPostIds);
+      if (saved) savedPostIds.add(postId);
+      else savedPostIds.delete(postId);
+      return { ...current, savedPostIds: [...savedPostIds] };
+    });
+  }
 
   // Featured article content
   const featured = {
@@ -142,19 +204,19 @@ const Blog = () => {
               <div className="modal__text">
                 <h2 className="modal__title">{activeArticle.title}</h2>
                 <div className="modal__body">
-                  {typeof articleBody === "string"
-                    ? (
-                      <p
-                        style={{
-                          whiteSpace: "pre-line",
-                          textIndent: "1.5rem",
-                          marginBottom: "1rem",
-                        }}
-                      >
-                        {articleBody}
-                      </p>
-                    )
-                    : articleBody}
+                  {typeof articleBody === "string" ? (
+                    <p
+                      style={{
+                        whiteSpace: "pre-line",
+                        textIndent: "1.5rem",
+                        marginBottom: "1rem",
+                      }}
+                    >
+                      {articleBody}
+                    </p>
+                  ) : (
+                    articleBody
+                  )}
                 </div>
               </div>
             </div>
@@ -194,6 +256,14 @@ const Blog = () => {
             fullText: post.fullText || post.content,
           }))}
           onOpen={(post) => openArticleModal(post)}
+          user={user}
+          token={token}
+          interactions={interactions}
+          interactionsLoading={interactionsLoading}
+          interactionsError={interactionsError}
+          onLoginRequest={onLoginRequest}
+          onLikeChange={updateLikedPost}
+          onSaveChange={updateSavedPost}
         />
       )}
     </div>

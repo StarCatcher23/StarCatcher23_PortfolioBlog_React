@@ -1,4 +1,17 @@
-const BlogPostList = ({ posts, onOpen }) => {
+import BlogPostCard from "./BlogPostCard";
+
+const BlogPostList = ({
+  posts,
+  onOpen,
+  user,
+  token,
+  interactions,
+  interactionsLoading,
+  interactionsError,
+  onLoginRequest,
+  onLikeChange,
+  onSaveChange,
+}) => {
   if (!posts || posts.length === 0) {
     return <p className="blog__empty">No articles found.</p>;
   }
@@ -6,25 +19,21 @@ const BlogPostList = ({ posts, onOpen }) => {
   return (
     <div className="blog__list">
       {posts.map((post, index) => (
-        <div
+        <BlogPostCard
           key={post.id}
-          className="blog__card fade-in"
+          post={post}
+          onOpen={onOpen}
+          user={user}
+          token={token}
+          liked={interactions.likedPostIds.includes(post.id)}
+          saved={interactions.savedPostIds.includes(post.id)}
+          interactionsLoading={interactionsLoading}
+          interactionsError={interactionsError}
+          onLoginRequest={onLoginRequest}
+          onLikeChange={onLikeChange}
+          onSaveChange={onSaveChange}
           style={{ animationDelay: `${index * 0.1}s` }}
-          onClick={() => onOpen(post)}
-        >
-          {/* Image */}
-          {post.image && (
-            <div className="blog__card-image">
-              <img src={post.image} alt={post.title} />
-            </div>
-          )}
-
-          {/* Title */}
-          <h2 className="blog__card-title">{post.title}</h2>
-
-          {/* Date */}
-          {post.date && <p className="blog__card-date">{post.date}</p>}
-        </div>
+        />
       ))}
     </div>
   );

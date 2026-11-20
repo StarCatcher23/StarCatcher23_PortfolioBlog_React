@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
+import { AuthContext } from "../../context/AuthContext.jsx";
 import NavBar from "../Navigation/NavBar";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
@@ -13,7 +14,26 @@ import Portfolio from "../../pages/Portfolio/Portfolio";
 import Blog from "../../pages/Blog/Blog";
 import Contact from "../../pages/Contact/Contact";
 
+function getStoredAuthSession() {
+  const token = localStorage.getItem("token");
+  const storedUser = localStorage.getItem("user");
+
+  if (!token || !storedUser) {
+    return { token: null, user: null };
+  }
+
+  try {
+    return { token, user: JSON.parse(storedUser) };
+  } catch (error) {
+    console.error("Unable to read the saved user session:", error);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    return { token: null, user: null };
+  }
+}
+
 function App() {
+  const [authSession, setAuthSession] = useState(getStoredAuthSession);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [initialEmail, setInitialEmail] = useState("");
@@ -50,6 +70,7 @@ function App() {
       const session = await loginUser(data);
       localStorage.setItem("token", session.token);
       localStorage.setItem("user", JSON.stringify(session.user));
+      setAuthSession({ token: session.token, user: session.user });
       setIsLoginOpen(false);
     } catch (error) {
       if (error.code === "ACCOUNT_NOT_FOUND") {
@@ -79,7 +100,7 @@ function App() {
   }
 
   return (
-    <>
+    <AuthContext.Provider value={authSession}>
       <NavBar
         onLoginClick={() => openLogin()}
         onRegisterClick={() => openRegister()}
@@ -112,10 +133,10 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<AboutMe />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog" element={<Blog onLoginRequest={() => openLogin()} />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </>
+    </AuthContext.Provider>
   );
 }
 
