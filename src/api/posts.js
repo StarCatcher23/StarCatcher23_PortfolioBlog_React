@@ -10,6 +10,13 @@ async function request(path, { token, ...options } = {}) {
     ...options,
     headers,
   });
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error(
+      `The API returned a non-JSON response (${response.status}). Deploy the Express API updates to Render.`,
+    );
+  }
+
   const result = await response.json();
 
   if (!response.ok) {
