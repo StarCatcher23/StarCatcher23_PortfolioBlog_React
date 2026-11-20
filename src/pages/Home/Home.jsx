@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 import {
   useEffect,
   useState,
@@ -128,7 +130,12 @@ function Home() {
         {/* LEFT SIDE */}
         <div className="home__left">
           {/* HEADER SECTION */}
-          <section className="home__header">
+          <motion.section
+            className="home__header"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="home__hero">
               <div>
                 <h1 className="home__title">Welcome to my Portfolio + Blog</h1>
@@ -156,10 +163,15 @@ function Home() {
                 ✨ New Quote
               </button>
             </div>
-          </section>
+          </motion.section>
 
           {/* PREVIEW SECTION */}
-          <section className="home__preview">
+          <motion.section
+            className="home__preview"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          >
             <h2 className="home__preview-title">My Developer Approach</h2>
 
             <p>
@@ -176,13 +188,15 @@ function Home() {
             </p>
 
             {/* SITE STATUS NOTICE */}
-            <p className="home__status">
-              <h3 className="home__status-label">**Site in Progress**</h3>
-              My portfolio and blog are currently under development. Some
-              features and pages may not be fully functional yet. Thanks for
-              stopping by as I continue building!
-            </p>
-          </section>
+            <div className="home__status">
+              <h3 className="home__status-label">Site in Progress</h3>
+              <p>
+                My portfolio and blog are currently under development. Some
+                features and pages may not be fully functional yet. Thanks for
+                stopping by as I continue building!
+              </p>
+            </div>
+          </motion.section>
 
           <Footer />
         </div>

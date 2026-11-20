@@ -11,7 +11,8 @@ import Footer from "../../components/Footer/Footer";
 const Contact = () => {
   // Contact form state
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,11 +20,23 @@ const Contact = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setStatus(null);
+    setIsSubmitting(true);
+
     try {
       await sendMessage(form);
-      setStatus("Message sent successfully!");
-    } catch {
-      setStatus("Something went wrong.");
+      setStatus({
+        type: "success",
+        message: "Message emailed successfully!",
+      });
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: error.message || "Unable to send your message.",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -76,24 +89,37 @@ const Contact = () => {
           <input
             name="name"
             placeholder="Your Name"
+            value={form.name}
             onChange={handleChange}
             required
           />
           <input
             name="email"
+            type="email"
             placeholder="Your Email"
+            value={form.email}
             onChange={handleChange}
             required
           />
           <textarea
             name="message"
             placeholder="Your Message"
+            value={form.message}
             onChange={handleChange}
             required
           />
-          <button type="submit">Send Message</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </button>
 
-          {status && <p className="contact__status">{status}</p>}
+          {status && (
+            <p
+              className={`contact__status ${status.type === "error" ? "error" : ""}`}
+              role={status.type === "error" ? "alert" : "status"}
+            >
+              {status.message}
+            </p>
+          )}
         </form>
       </section>
 

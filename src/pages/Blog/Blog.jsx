@@ -9,6 +9,24 @@ import Modal from "../../components/Modal/Modal";
 import ModalThumbnailGrid from "../../components/Modal/ModalThumbnailGrid";
 import { fetchPosts } from "../../api";
 
+const normalizePostImage = (image) => {
+  if (typeof image !== "string") return image;
+
+  try {
+    const url = new URL(image);
+    if (url.hostname !== "localhost" && url.hostname !== "127.0.0.1") {
+      return image;
+    }
+
+    const filename = decodeURIComponent(url.pathname.split("/").pop() || "");
+    return filename
+      ? `${import.meta.env.BASE_URL}images/${encodeURIComponent(filename)}`
+      : image;
+  } catch {
+    return image;
+  }
+};
+
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState([]);
@@ -167,6 +185,11 @@ const Blog = () => {
           posts={filteredPosts.map((post) => ({
             ...post,
             id: post.id || post._id,
+            image: normalizePostImage(post.image),
+            thumbnails: post.thumbnails?.map((thumbnail) => ({
+              ...thumbnail,
+              image: normalizePostImage(thumbnail.image),
+            })),
             preview: post.preview || post.content,
             fullText: post.fullText || post.content,
           }))}

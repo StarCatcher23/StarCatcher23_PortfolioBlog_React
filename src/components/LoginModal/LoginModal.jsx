@@ -59,6 +59,7 @@ const LoginModal = ({
         <input
           type="email"
           name="email"
+          autoComplete="email"
           className={`modal__input ${errors.email ? "modal__input_invalid" : ""}`}
           placeholder="Email"
           value={values.email}
@@ -73,6 +74,7 @@ const LoginModal = ({
         <input
           type="password"
           name="password"
+          autoComplete="current-password"
           className={`modal__input ${errors.password ? "modal__input_invalid" : ""}`}
           placeholder="Password"
           value={values.password}

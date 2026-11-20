@@ -62,6 +62,7 @@ const RegisterModal = ({
       <input
         type="text"
         name="name"
+        autoComplete="name"
         placeholder="Name"
         value={values.name}
         onChange={handleChange}
@@ -78,6 +79,7 @@ const RegisterModal = ({
       <input
         type="email"
         name="email"
+        autoComplete="email"
         placeholder="Email"
         value={values.email}
         onChange={handleChange}
@@ -86,6 +88,7 @@ const RegisterModal = ({
       <input
         type="password"
         name="password"
+        autoComplete="new-password"
         placeholder="Password"
         value={values.password}
         onChange={handleChange}
