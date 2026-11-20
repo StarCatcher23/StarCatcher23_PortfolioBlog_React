@@ -4,6 +4,7 @@ import { useState } from "react";
 import NavBar from "../Navigation/NavBar";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import { loginUser, registerUser } from "../../api";
 
 import Menu from "../../pages/Menu/menu";
 import Home from "../../pages/Home/Home";
@@ -15,39 +16,94 @@ import Contact from "../../pages/Contact/Contact";
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [initialEmail, setInitialEmail] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [loginMessage, setLoginMessage] = useState("");
+  const [registerError, setRegisterError] = useState("");
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [isRegisterLoading, setIsRegisterLoading] = useState(false);
+
+  function openLogin(email = "", message = "") {
+    setInitialEmail(email);
+    setLoginError("");
+    setLoginMessage(message);
+    setRegisterError("");
+    setIsRegisterOpen(false);
+    setIsLoginOpen(true);
+  }
+
+  function openRegister(email = "") {
+    setInitialEmail(email);
+    setLoginError("");
+    setLoginMessage("");
+    setRegisterError("");
+    setIsLoginOpen(false);
+    setIsRegisterOpen(true);
+  }
+
+  async function handleLogin(data) {
+    setIsLoginLoading(true);
+    setLoginError("");
+    setLoginMessage("");
+
+    try {
+      const session = await loginUser(data);
+      localStorage.setItem("token", session.token);
+      localStorage.setItem("user", JSON.stringify(session.user));
+      setIsLoginOpen(false);
+    } catch (error) {
+      if (error.code === "ACCOUNT_NOT_FOUND") {
+        openRegister(data.email);
+      } else {
+        setLoginError(error.message || "Unable to log in. Please try again.");
+      }
+    } finally {
+      setIsLoginLoading(false);
+    }
+  }
+
+  async function handleRegister(data) {
+    setIsRegisterLoading(true);
+    setRegisterError("");
+
+    try {
+      await registerUser(data);
+      openLogin(data.email, "Registration successful. You can now log in.");
+    } catch (error) {
+      setRegisterError(
+        error.message || "Unable to register. Please try again.",
+      );
+    } finally {
+      setIsRegisterLoading(false);
+    }
+  }
 
   return (
     <>
       <NavBar
-        onLoginClick={() => setIsLoginOpen(true)}
-        onRegisterClick={() => setIsRegisterOpen(true)}
+        onLoginClick={() => openLogin()}
+        onRegisterClick={() => openRegister()}
       />
 
       <LoginModal
         isOpen={isLoginOpen}
         onClose={() => setIsLoginOpen(false)}
-        onLogin={(data) => {
-          console.log("Login data:", data);
-          setIsLoginOpen(false);
-        }}
-        onOpenRegister={() => {
-          setIsLoginOpen(false);
-          setIsRegisterOpen(true);
-        }}
+        onLogin={handleLogin}
+        onOpenRegister={openRegister}
+        initialEmail={initialEmail}
+        error={loginError}
+        message={loginMessage}
+        isLoading={isLoginLoading}
       />
 
       <RegisterModal
         isOpen={isRegisterOpen}
         onClose={() => setIsRegisterOpen(false)}
-        onRegister={(data) => {
-          console.log("Register data:", data);
-          setIsRegisterOpen(false);
-          setIsLoginOpen(true);
-        }}
-        onOpenLogin={() => {
-          setIsRegisterOpen(false);
-          setIsLoginOpen(true);
-        }}
+        onRegister={handleRegister}
+        onOpenLogin={openLogin}
+        initialEmail={initialEmail}
+        error={registerError}
+        isLoading={isRegisterLoading}
       />
 
       <Routes>

@@ -114,6 +114,12 @@
   margin-top: 4px;
 }
 
+.modal__message {
+  margin: 0;
+  color: #287a3e;
+  font-size: 14px;
+}
+
 .modal__button {
   display: inline-flex; /* allows hug width */
   align-items: center;

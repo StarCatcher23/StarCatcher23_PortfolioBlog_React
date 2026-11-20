@@ -9,23 +9,26 @@ const LoginModal = ({
   onClose,
   isLoading,
   onOpenRegister,
+  initialEmail = "",
+  error,
+  message,
 }) => {
   const defaultValues = useMemo(
     () => ({
-      email: "",
+      email: initialEmail,
       password: "",
     }),
-    [],
+    [initialEmail],
   );
 
   const { values, handleChange, errors, resetForm, isValid } =
     useFormWithValidation(defaultValues);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!isOpen || initialEmail) {
       resetForm(defaultValues, {}, false);
     }
-  }, [isOpen, resetForm, defaultValues]);
+  }, [isOpen, resetForm, defaultValues, initialEmail]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -40,7 +43,7 @@ const LoginModal = ({
 
   const handleSwitchToRegister = () => {
     onClose(); // close Login
-    onOpenRegister(); // open Register
+    onOpenRegister(values.email); // open Register
   };
 
   return (
@@ -85,6 +88,16 @@ const LoginModal = ({
           <span className="modal__error">{errors.password}</span>
         )}
       </label>
+      {error && (
+        <p className="modal__error" role="alert">
+          {error}
+        </p>
+      )}
+      {message && (
+        <p className="modal__message" role="status">
+          {message}
+        </p>
+      )}
     </ModalWithForm>
   );
 };

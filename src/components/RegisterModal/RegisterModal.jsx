@@ -9,25 +9,27 @@ const RegisterModal = ({
   onClose,
   isLoading,
   onOpenLogin,
+  initialEmail = "",
+  error,
 }) => {
   const defaultValues = useMemo(
     () => ({
       name: "",
       avatar: "",
-      email: "",
+      email: initialEmail,
       password: "",
     }),
-    [],
+    [initialEmail],
   );
 
   const { values, handleChange, errors, resetForm, isValid } =
     useFormWithValidation(defaultValues);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!isOpen || initialEmail) {
       resetForm(defaultValues, {}, false);
     }
-  }, [isOpen, resetForm, defaultValues]);
+  }, [isOpen, resetForm, defaultValues, initialEmail]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -44,7 +46,7 @@ const RegisterModal = ({
 
   const handleSwitchToLogin = () => {
     onClose(); // close Register
-    onOpenLogin(); // open Login
+    onOpenLogin(values.email); // open Login
   };
 
   return (
@@ -67,6 +69,7 @@ const RegisterModal = ({
         value={values.name}
         onChange={handleChange}
         className={`modal__input ${errors.name ? "modal__input_invalid" : ""}`}
+        required
       />
       <input
         type="text"
@@ -84,6 +87,7 @@ const RegisterModal = ({
         value={values.email}
         onChange={handleChange}
         className={`modal__input ${errors.email ? "modal__input_invalid" : ""}`}
+        required
       />
       <input
         type="password"
@@ -93,7 +97,14 @@ const RegisterModal = ({
         value={values.password}
         onChange={handleChange}
         className={`modal__input ${errors.password ? "modal__input_invalid" : ""}`}
+        autoComplete="new-password"
+        required
       />
+      {error && (
+        <p className="modal__error" role="alert">
+          {error}
+        </p>
+      )}
     </ModalWithForm>
   );
 };
